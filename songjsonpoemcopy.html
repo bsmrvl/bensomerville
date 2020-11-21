@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<body>
+
+<button id='go'>GO</button>
+
+<script type='text/javascript' src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.0.min.js'></script>
+<script type='text/javascript' src='/js/main.js'></script>
+
+<script type='text/javascript'>
+
+    $(document).ready(function(){
+
+        event = new CustomEvent('nnnext');
+        $('#go').click(function(){
+            var i = 0;
+            $(document).on('nnnext',function(){
+                if(poem[i]){
+                    console.log(poem[i]);
+                    var bigdata = "<script type='text/javascript' src='/js/straight.js'>" + String.fromCharCode(60) + "/script>";
+                    $.getJSON('/js/poems/' + poem[i] + '.json', function(json) {
+                        var meta = '<!DOCTYPE html>\n\n<head>\n\n' + bigdata + '\n<meta charset="utf-8" http-equiv="Content-Type"/>\n<meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n<link rel="stylesheet" type="text/css" href="/css/main.min.css" />\n<title>' + json.title + ' - Poem</title>\n<meta name="description" content="' + json.text.substring(0,200).replace(new RegExp('<br>','g'),' / ').replace(new RegExp('"','g'), '\'').replace(new RegExp('<i>','g'),'').replace(new RegExp('</i>','g'),'') + '" />\n\n<meta property="og:title" content="' + json.title + ' - Poem" />\n<meta property="og:image" content="/img/backgrounds/2015-min.jpg" />\n<meta property="og:type" content="website" />\n\n';
+                        var moremeta = '<meta name="twitter:creator" content="@bensomer_ville" />\n<meta name="twitter:description" content="' + json.text.substring(0,200).replace(new RegExp('<br>','g'),' / ').replace(new RegExp('"','g'), '\'').replace(new RegExp('<i>','g'),'').replace(new RegExp('</i>','g'),'') + '" />\n<meta name="twitter:image" content="https://bensomerville.com/img/backgrounds/2015-min.jpg" />\n\n</head>\n\n<div class="noJS">\n\n<h2><a href="/">BEN SOMERVILLE</a></h2><br>\n\n';
+                        var title = '<h3>' + json.title + '</h3><br>\n';
+                        var mainb = '<p>' + json.text.replace(new RegExp('\u2019','g'),"'") + '</p>\n\n</div>';
+                        $.ajax({
+                            type: 'POST',
+                            url: '/overwrite.php',
+                            data: {
+                                hog: meta + moremeta + title + mainb,
+                                path: 'p/poem-/'+poem[i]+'.html'
+                            },
+                            success: function(){
+                                i === poem.length ? $(document).off('nnnext') :
+                                (i++, $(document).trigger('nnnext'))
+                            }
+                        });
+                    });
+                } else {
+                    i === poem.length ? $(document).off('nnnext') :
+                    (i++, $(document).trigger('nnnext'))
+                }
+            });
+            $(document).trigger('nnnext');
+        });
+    });
+
+</script>
+
+</body>

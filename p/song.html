@@ -1,0 +1,25 @@
+<!doctype html>
+
+<head></head>
+
+<div id="content">
+	<a class="header internal" href="/">BEN SOMERVILLE</a>
+	
+	<div class="lyrics">
+		<h2><img id='lPlay' class='player player1 button2' src='/img/icons/player1.png'> <span id='lTitle'></span></h2>
+		<h3><a id='lAlbum' class='internal2'></a></h3>
+		<br><br>
+        <p id='lText'></p>
+    </div>
+    
+</div>
+
+<div id="canvas">
+	<div id="background"></div>
+</div>
+
+<script>
+	songp();
+	document.addEventListener('linkchange', songp);
+	onPageLoad("Ben Somerville - Songs");
+</script>

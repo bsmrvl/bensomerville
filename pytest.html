@@ -1,0 +1,16 @@
+<div id='page'></div>
+
+<script>
+    page = document.getElementById('page')
+    py = new XMLHttpRequest()
+    py.open('GET','/test.py');
+    py.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    py.onreadystatechange = () => {
+        if (py.readyState === 4) {
+            py.status === 200
+                ? page.innerHTML = py.responseText
+                : console.log('Error: ' + py.status);
+        }
+    };
+    py.send();
+</script>

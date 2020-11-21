@@ -1,0 +1,50 @@
+<!doctype html>
+
+<head>
+    <script type='text/javascript' src='/js/straight.js'></script>
+    <title>Ben Somerville - Newsletter</title>
+    <meta name='description' content="Newsletter/Blog posts during 2020 Q1" />
+	
+	<meta property="og:title" content="Ben Somerville - Newsletter" />
+	<meta property="og:image" content="/img/entanglement/5022.jpg" />
+	<meta property="og:type" content="website" />
+
+	<meta name="twitter:creator" content="@bensomer_ville" />
+	<meta name="twitter:description" content="Newsletter/Blog posts during 2020 Q1" />
+	<meta name="twitter:image" content="https://bensomerville.com/img/entanglement/5022.jpg" />
+
+    <meta charset="utf-8" http-equiv='Content-Type'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <link rel='shortcut icon' type='image/png' href='/img/icons/eastcoast.jpg' />
+    <link rel='stylesheet' type='text/css' href='/css/main.min.css' />
+</head>
+
+<div id="content" class="center">
+	<a class="header internal" href='/'>BEN SOMERVILLE</a>
+			
+	<div class='blogbody'>
+		<h2 class='blogtitle'>Descent Into Pandemic</h2>
+		<p class='blogdes'>Early in 2020 I began an email newsletter, purposed to document an attempted participation in the Philly music scene, but quickly turning into a progression of quarantine activities. As my activies then turned away from music and toward such things as building this website and <i><a class='internal' href='/p/datascience'>studying data science</a></i>, I put the newsletter on hold. Well, here is a glimpse into those times.</p>
+
+		<div class='blogposts'></div>
+	</div>	
+
+	<div id='loadmore' class='brick button1'>Load More</div>
+</div>
+
+<div id="canvas">
+	<div id="background"></div>
+</div>
+
+<script>
+	allPosts = ['jamsjamsjams','tripwiredquarry','masterypatience','somervillefunk','yourownadvice','weeklycharcuterie','becomingatradesman','unusualvocalrecording','exclusiveperformance','shorthistoryof','applaudthedebut'];
+	loadPosts(allPosts.slice(0,3));
+	var shown = 3;
+	var loadMore = document.getElementById('loadmore');
+	loadMore.addEventListener('click', function() {
+		loadPosts(allPosts.slice(shown, shown+=3));
+	});
+	onPageLoad("Ben Somerville - Newsletter", {path:'/img/backgrounds/2019-min.jpg'});
+
+
+</script>

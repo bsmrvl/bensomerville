@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<head>
+    <script type='text/javascript' src='/js/straight.js'></script>
+    <title>Connecting Demographics to Political Opinions in the Post-Spring Arab World</title>
+    <meta name='description' content="Arab Barometer is an organization which has conducted five giant surveys across the Arab world since 2006, asking participants around 300 questions about how they live and what they think. The data is available for free, and the possibilities for analysis seem endless. I lived in Tunisia from 2012-13 as an"/>
+
+    <meta property="og:title" content="Connecting Demographics to Political Opinions in the Post-Spring Arab World" />
+    <meta property="og:image" content="/img/backgrounds/ithought.jpg" />
+    <meta property="og:type" content="website" />
+
+	<meta name="twitter:creator" content="@bensomer_ville" />
+	<meta name="twitter:description" content="Arab Barometer is an organization which has conducted five giant surveys across the Arab world since 2006, asking participants around 300 questions about how they live and what they think. The data is available for free, and the possibilities for analysis seem endless. I lived in Tunisia from 2012-13 as an" />
+	<meta name="twitter:image" content="https://bensomerville.com/img/backgrounds/ithought.jpg" />
+
+    <meta charset="utf-8" http-equiv='Content-Type'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <link rel='shortcut icon' type='image/png' href='/img/icons/eastcoast.jpg' />
+    <link rel='stylesheet' type='text/css' href='/css/main.min.css' />
+</head>
+
+<img id='bgbg' src='/img/backgrounds/ithought.jpg' alt='Blog Background' width="100%">
+
+<div id="content" class="center">
+	<a class="header internal" href="/">BEN SOMERVILLE</a>
+	
+	<div class="blog">
+        <h1 id='title'>Connecting Demographics to Political Opinions in the Post-Spring Arab World</h1>
+
+        <p id='cred'>Ben Somerville - <span style='color:grey'>Sept 24, 2020</span></p>
+        <a id='linkedin' href='https://www.linkedin.com/in/ben-somerville/' target='_blank'>
+            <img style='height: 24px' src='/img/icons/linkedin.png'>
+        </a>
+
+        <div id='mainbody'>
+            <p><a href='https://www.arabbarometer.org'>Arab Barometer</a> is an organization which has conducted five giant surveys across the Arab world since 2006, asking participants around 300 questions about how they live and what they think. The data is available for free, and the possibilities for analysis seem endless. I lived in Tunisia from 2012-13 as an uninterested highschooler, so I wanted to revisit that era and chose to investigate AB’s third wave of surveys, covering 2012-14. </p>
+            <p>I wondered, what kinds of connections can we make between how Arabs live and what they think about their societies? More specifically, I was interested in how thoroughly we could cover the data when making associations. It’s easy to take two or three of the survey questions and check how they relate to the participant’s age or education, for example. But might we take a big chunk of the opinions and compare them to demographic info all at once?</p>
+            <p>There is a technique, mostly used in machine learning, which does something of the sort. It is called Principal Component Analysis. PCA can take a large number of questions and, while retaining most of the information, transform them into just a few abstract parameters. I’ll explain more below.</p>
+            <p>I took 39 of the opinion questions from two categories of the survey: that relating to cultural and religious opinions, and that relating to the Arab Spring. A few examples are:</p>
+            <ul>
+                <li><i>A married woman can work outside the home </i>(5 options, from “Strongly disagree” to “Strongly agree”)</li>
+                <li><i>Do you have feelings of victory or personal loss with regard to the Arab Spring? </i>(3 options, from “More of a loss” to “More of a victory”)</li>
+            </ul>
+            <p>Performing PCA on these questions (and a few other things, I’ll explain), I produced this plot:</p>
+            <img class='plot' src='/img/plots/mixingbowl.jpg' alt="Mixing Bowl Plot" width="100%">
+            <p>What in the world!? Let's break this down.</p>
+            <p>The axes represent the first two "principal components" of the 39 opinion questions. They are totally abstract, but contain as much of the information as is possible in two dimensions. Each point represents a participant in the survey.</p>
+            <p>Two shapes stand out. First, the "oven mitt". I used a clustering algorithm to separate the two concentrations, the main group and the "thumb". The colors represent these clusters.</p>
+            <p>Second I noticed the semi-circular, sort of "jostled mixing bowl". I wondered if, measuring the radius and angle of data points respective to this shape, we might find any patterns. Let us take a look!</p>
+            <br><hr noshade color='#eeeeee'><br>
+            <p>I found the clusters to be strongly related to occupation of the participants.</p>
+            <img class='plot' src='/img/plots/occupate.jpg' alt="Occupations Plot" width="100%">
+            <div class='twocol'>
+                <div>
+                    <p class='colhead'>Skewed toward Main Cluster</p>
+                    <ul>
+                        <li>Armed forces / police</li>
+                        <li>Director of institution or high ranking governmental</li>
+                        <li>Director of an institution, >=10 employees</li>
+                        <li>Governmental employee</li>
+                        <li>Student</li>
+                        <li>Unemployed</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class='colhead'>Skewed toward Thumb Cluster</p>
+                    <ul>
+                        <li>Shop/grocery store owner</li>
+                        <li>Director of an institution, &lt;10 employees</li>
+                        <li>Private sector employee</li>
+                        <li>Professional (lawyer, accountant, teacher, doctor, etc.)</li>
+                        <li>Craftsperson</li>
+                        <li>Manual laborer</li>
+                    </ul>
+                </div>
+            </div>
+            <p>This is striking. Those proportionally more common in the thumb cluster are all the classic working types, small business people. Those in the main cluster are—all the rest.</p>
+            <br><hr noshade color='#eeeeee'><br>
+            <p>Our abstract Angle parameter was related to many of the same things as the clusters, which makes sense looking at the plot, where the thumb cluster starts at around 100°. However, the two are not redundant.</p>
+            <img class='plot' src='/img/plots/rururb.jpg' alt="Rural/Urban Plot" width="100%">
+            <p>If Angle and cluster were redundant, we would expect to see two peaks representing the two clusters. But instead we see a smooth progression. As we follow the arc of the mixing bowl, we get progressively more urban.</p>
+            <br><hr noshade color='#eeeeee'><br>
+            <p>Finally let's see if our Radius parameter says anything interesting. Here it is plotted against four education levels, from middle school to a bachelor's degree.</p>
+            <img class='plot' src='/img/plots/educate.jpg' alt="Education Plot" width="100%">
+            <p>Again there is a clear pattern here. As we move outward on our PCA plot, the higher education levels become proportionally more common, and the lower levels less so.</p>
+            <br><hr noshade color='#eeeeee'><br>
+            <p>This is only the very start to a full analysis of these relationships. We have begun to group demographics by analyzing the principal components of their opinions; but because these components are totally abstract, we don't yet know what these groups actually <i>think</i>, which was the whole point of the investigation!</p>
+            <p>However, we've taken a big step by discovering that there <i>are</i> relationships here. What do they mean when it comes to real political opinions? That is a question for next time.</p>
+            <br><hr noshade color='#eeeeee'><br>
+            <p>See code <a href='https://github.com/bsmrvl/Unit-1-Build/blob/master/build-1-official-notebook.ipynb'>here</a></p>
+
+        </div>
+
+
+        <!-- <div id='foot'>Icons made by <a href="https://www.flaticon.com/authors/google" title="Google">Google</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></div> -->
+    </div>
+</div>
+
+<div id="canvas">
+	<div id="background"></div>
+</div>
+
+<script>
+    onPageLoad("Connecting Arab Demographics to Political Opinions","");
+</script>

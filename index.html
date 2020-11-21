@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" http-equiv='Content-Type'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <title>Ben Somerville</title>
+    <meta name='description' content='Official Website of Writer / Singer / Musician / Student Ben Somerville'/>
+
+    <meta property="og:title" content="Ben Somerville" />
+	<meta property="og:image" content="/img/covers/eastcoast.jpg" />
+	<meta property="og:type" content="website" />
+
+	<meta name="twitter:creator" content="@bensomer_ville" />
+	<meta name="twitter:description" content="Official Website of Writer / Singer / Musician / Student Ben Somerville" />
+	<meta name="twitter:image" content="https://bensomerville.com/img/covers/eastcoast.jpg" />
+
+    <link rel='shortcut icon' type='image/png' href='/img/icons/eastcoast.jpg' />
+    <link rel='stylesheet' type='text/css' href='/css/main.min.css' />
+</head>
+
+<body>
+    <div id='nav'>
+        <div id='greatshuffle'>
+            <div id='shuffledraw' class='navbut'><div>Explore</div></div>
+            <a href='/p/lyrics.php' class='shuffles' name='song'>Song</a>
+            <a href='/p/poems.php' class='shuffles' name='poem'>Poem</a>
+            <a href='/p/music' class='shuffles' name='albums'>Album</a>
+            <a href='/p/sessions.php' class='shuffles' name='session'>Session</a>
+        </div>
+        <a class='navbut nCL internal' href='/p/music'>Music</a>
+        <a class='navbut nCL internal' href="/p/news">News</a>
+        <a class='navbut nCL internal' href='/p/datascience'>Data</a>
+    </div>
+    <div id='mobilenav'>
+        <div id='mobileexplore' class='navbut nCL'><img src='/img/icons/menu.png' style='padding: 9px 0 0 0;height: 20px;' alt='Menu'></div>
+        <div id='expand' class='expnd'>
+            <a href='/p/lyrics.php' class='shuffles' name='song'>Song</a>
+            <a href='/p/poems.php' class='shuffles' name='poem'>Poem</a>
+            <a href='/p/music' class='shuffles' name='albums'>Album</a>
+            <a href='/p/sessions.php' class='shuffles' name='session'>Session</a>
+            <br>
+            <a class='navbut nCL internal' href='/p/music'>Music</a>
+            <a class='navbut nCL internal' href="/p/news">News</a>
+            <a class='navbut nCL internal' href='/p/datascience'>Data</a>
+            <br>
+        </div>
+    </div>
+    <div id='pageContent'><div id='content'></div><div style='height: 100vh'></div></div>
+    <!-- <img id='pageLoading' src='/img/6.gif' width='24px', alt='Page Loading'> -->
+    <div id='stickyB'>
+        <!-- <div id='neon' class='neOff'>
+            <div id='n1'>Ben is</div>
+            <div id='n2'>LIVE</div>
+            <div id='n3'>at the piano</div>
+        </div> -->
+        <div id='player'>
+            <div id='copied'>Song Link Copied!</div>
+            <div id='rummage'><a class='internal'><img id='pCover' alt='Now Playing Cover'></a>
+                <div id='pDetails'>
+                    <a class='internal' id='pName'></a><br>
+                    <i><a class='internal' id='pAlbum'></a></i>
+                </div>
+                <div id='pLinks'>
+                    <a id='pYou' class='lisLink' target='_blank' rel='noopener'><img src='/img/icons/tubeSmall.png' alt='Listen on Youtube'></a>
+                    <a id='pSC' class='lisLink' target='_blank' rel='noopener'><img src='/img/icons/scSmall.png' alt='Listen on SoundCloud'></a>
+                    <a id='pSpot' class='lisLink' target='_blank' rel='noopener'><img src='/img/icons/spotSmall.png' alt='Listen on Spotify'></a>
+                </div>
+            </div>
+            <div id='seek'>
+                <div id='pControls'>
+                    <img id='prev' class='mButton button2' src='/img/icons/prev.png' alt='Previous Track'>
+                    <img id='playpause' class='mButton button2' src='/img/icons/play.png' alt='Play/Pause'>
+                    <img id='next' class='mButton button2' src='/img/icons/next.png' alt='Next Track'>
+                </div>
+                <div id='tracktime'></div>
+                <img id='aLoading' style='display:none;' src='/img/ajax_load.gif'>
+                <div id='seekbar'>
+                    <div id='scrub'></div>
+                    <div id='scrubvis'></div>
+                </div>
+                <div id='tracklength'></div>
+                <img id="sharesong" class='button2' src='/img/icons/share.png' alt='Share Current Track'>
+            </div>
+        </div>
+        <div id='radio' style='display:none;'>
+            <div id='rDetails'>Ben Somerville LIVE</div>
+            <div id='rLinks'></div>
+        </div>
+    </div>
+    <div id="audios"></div>
+    <div id='footer' class='center'>
+        <div id='footCon' >
+            <div id='copyright'>Copyright &copy; 2020 Ben Somerville</div>
+            <div id='social'>
+                <a href='https://www.youtube.com/channel/UCwyqJYssRN7Iy4wKwOzKUsg' target='_blank' rel='noopener'><img src='img/icons/youtube.png' alt='Ben Somerville YouTube'></a>
+                <a href='https://soundcloud.com/bensomerville/' target='_blank' rel='noopener'><img src='/img/icons/soundcloud.png' alt='Ben Somerville SoundCloud'></a>
+                <a href='https://www.instagram.com/bensomer_ville/' target='_blank' rel='noopener'><img src='/img/icons/instagram.png' alt='Ben Somerville Instagram'></a>
+                <a href='https://www.facebook.com/bensomerville0' target='_blank' rel='noopener'><img src='/img/icons/facebook.png' alt='Ben Somerville Facebook'></a>
+                <a href='https://twitter.com/bensomer_ville' target='_blank' rel='noopener'><img src='/img/icons/twitter.png' alt='Ben Somerville Twitter'></a>
+            </div>
+        </div>
+    </div>
+
+    <script type='text/javascript' src='/js/resize.min.js'></script>
+    <script type='text/javascript' src='/js/allTracks.js'></script>
+    <script type='text/javascript' src='/js/player.min.js'></script>
+    <!-- <script type='text/javascript' src='js/radio.min.js'></script> -->
+    <script type='text/javascript' src='/js/main.min.js'></script>
+</body>
+
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Monoton'>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=block">
+<style>
+    @font-face { font-family: 'Broadway'; src: url(fonts/BROADW.TTF); font-display: block; } 
+    @font-face { font-family: 'Icklips'; src: url(fonts/Icklips.ttf) }
+</style>
+
+</html>

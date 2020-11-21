@@ -1,0 +1,16 @@
+{
+    "host": "108.167.181.220",
+    "username": "smrvl",
+    "password": "HObanjosrock22@",
+    "remotePath": "python.bensomerville.com",
+    "protocol": "ftp",
+    "port": 0,
+    "fileNameEncoding": "utf8",
+    "autoUpload": true,
+    "autoDelete": false,
+    "autoDownload": false,
+    "ignore": [
+        ".git",
+        "/.vscode"
+    ]
+}

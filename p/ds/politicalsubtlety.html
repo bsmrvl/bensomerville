@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<head>
+    <script type='text/javascript' src='/js/straight.js'></script>
+    <title>Illustrating Political Subtlety through Machine Learning</title>
+    <meta name='description' content="You can guess a lot about a person by their political opinions. Take any question—what kind of job does this person have?—how educated are they?—where did they grow up? Instead of asking them directly, ask them 40 political questions. You'll get an idea about your unasked Q, oh yes you will. The thing is, you'll probably be wrong."/>
+
+    <meta property="og:title" content="Illustrating Political Subtlety through Machine Learning" />
+    <meta property="og:image" content="/img/backgrounds/ithought.jpg" />
+    <meta property="og:type" content="website" />
+
+	<meta name="twitter:creator" content="@bensomer_ville" />
+	<meta name="twitter:description" content="You can guess a lot about a person by their political opinions. Take any question—what kind of job does this person have?—how educated are they?—where did they grow up? Instead of asking them directly, ask them 40 political questions. You'll get an idea about your unasked Q, oh yes you will. The thing is, you'll probably be wrong." />
+	<meta name="twitter:image" content="https://bensomerville.com/img/backgrounds/ithought.jpg" />
+
+    <meta charset="utf-8" http-equiv='Content-Type'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <link rel='shortcut icon' type='image/png' href='/img/icons/eastcoast.jpg' />
+    <link rel='stylesheet' type='text/css' href='/css/main.min.css' />
+</head>
+
+<img id='bgbg' src='/img/backgrounds/ithought.jpg' alt='Blog Background' width="100%">
+
+<div id="content" class="center">
+	<a class="header internal" href="/">BEN SOMERVILLE</a>
+	
+	<div class="blog">
+        <h1 id='title'>Illustrating Political Subtlety through Machine Learning</h1>
+
+        <p id='cred'>Ben Somerville - <span style='color:grey'>Oct 23, 2020</span></p>
+        <a id='linkedin' href='https://www.linkedin.com/in/ben-somerville/' target='_blank'>
+            <img style='height: 24px' src='/img/icons/linkedin.png'>
+        </a>
+
+        <div id='mainbody'>
+            <p>You can guess a lot about a person by their political opinions. Take any question—what kind of job does this person have?—how educated are they?—where did they grow up? Instead of asking them directly, ask them 40 political questions. You'll get an idea about your unasked Q, oh yes you will. The thing is, you'll probably be wrong.</p>
+            <p>Fortunately, you probably know that. You'll probably try to suppress the stereotypes. But what if you humored yourself and, just to stay objective, used a machine learning model to make the guess, rather than your own intuition?</p>
+            <p>It's scary to put faith in a machine to make judgments about a human. Though they are more "objective" in a way, it's scary to imagine the new lines of prejuduce that might be drawn from the results.</p>
+            <p>Unless the lines are so crooked that prejudice is impossible. The great thing about machines—they don't draw straight lines like humans. This week, going deeper into the <a href="https://www.arabbarometer.org", target="_blank">Arab Barometer</a> data using machine learning techniques, I was worried that my findings would be polarizing, like all things political. But I found just the opposite.</p>
+            <br><hr noshade color='#eeeeee'><br>
+            <p>Taking same 39 questions as <a class='internal' href='/p/ds/arabgroups'>last month</a> (I'll look at some specifics), I wondered what I might predict. Recall that I previously found a division of occupations into two approximate groups, working class/small business and government/large business employees, based solely on these 39 questions (see <a href='https://bensomerville.com/img/plots/occupate.jpg' target="_blank">plot</a>). I decided to see how effectively I could use machine learning to classify someone as being in one of these occupational categories. My groups were:</p>
+            <div class='twocol'>
+                <div>
+                    <p class='colhead'>Gov/Big Business</p>
+                    <ul>
+                        <li>Armed forces / police</li>
+                        <li>Director of institution or high ranking governmental</li>
+                        <li>Director of an institution, >=10 employees</li>
+                        <li>Governmental employee</li>
+                        <li>Student</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class='colhead'>Working Class</p>
+                    <ul>
+                        <li>Shop/grocery store owner</li>
+                        <li>Director of an institution, &lt;10 employees</li>
+                        <li>Private sector employee</li>
+                        <li>Professional (lawyer, accountant, teacher, doctor, etc.)</li>
+                        <li>Craftsperson</li>
+                        <li>Manual laborer</li>
+                        <li>Farm worker/owner</li>
+                    </ul>
+                </div>
+            </div>
+            <p>I left out all individuals listed as retired, unemployed, housewife, or "other".</p>
+            <p>Right away it was clear that split wasn't clean. After a great deal of model tuning my prediction accuracy hovered at 60%. That doesn't sound <i>terrible</i>, but my sample was 55% "big business" and 45% "working class"—I could have gotten almost the same accuracy by simply classifying all of them as big business!</p>
+            <p>I turned to another approach. Instead of spending futile hours knocking my accuracy up a few percent, I changed the goal of my model a bit. Instead of trying to accurately classify <i>everyone</i>, I told the model to only classify those which were easiest. This is known as optimizing for precision rather than overall accuracy. Because I was equally interested in both classes, I had to create two models, one optimized to pick only those individuals it was almost <i>certain</i> belonged in the gov/large class, and the other the same, for the working class.</p>
+            <p>For both categories, I was able to get precision scores over 90%. At what expense? Let's take a look.</p>
+            <p style='text-align: center;'><img src='/img/plots/conf.jpg' width='80%'></p>
+            <p>The right column is what my precision-trained model cared about. To get a precision over 90%, it had to narrow down the data to a tiny subset, containing only those which were very easy to classify. I told my model not to care about the left column. I only wanted to look at extremes.</p>
+            <p>The predictions for my gov/big business model looked about the same. And this is where things get interesting. Think about what we have—two models, each selecting people which <i>definitely</i> belong to their class, and definitely <i>not</i> the other. The models are trained on nothing but political/cultural opinion questions. You'd expect that, comparing the definite positives from each model, you might find stark differences in opinion. You do, but not in the broad way you'd need to start a riot. On the contrary, the extremes only clarify the nuance.</p>
+            <p>Here are the top five most important questions for each model. Take a second to read them over.</p>
+            <div class='twocol'>
+                <div>
+                    <p class='colhead'>Gov/Big Business</p>
+                    <ul>
+                        <li><i>Attend Friday prayer/Sunday services?</i></li>
+                        <li><i>Should constitution insure equal rights for men and women?</i></li>
+                        <li><i>Listen to or read the Quran?</i></li>
+                        <li><i>Should government enact laws in accordance with Islamic law?</i></li>
+                        <li><i>Does democracy contradict the teachings of Islam?</i></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class='colhead'>Working Class</p>
+                    <ul>
+                        <li><i>Should constitution insure Shari’a is the main source of legislation?</i></li>
+                        <li><i>Should government enact laws in accordance with Islamic law?</i></li>
+                        <li><i>Should constitution forbid the president from assuming absolute power?</i></li>
+                        <li><i>Are men generally better at political leadership than women?</i></li>
+                        <li><i>Pray daily?</i></li>
+                    </ul>
+                </div>
+            </div>
+            <p>You don't know how each group answered, but you can already guess which ones go together. Since the question of Islamic law is important to both models, the groups' opinions on that are probably opposite. Then, the group that wants Islamic law probably prays and reads the Quran more. Regarding gender issues, if you knew that the gov/large class said <i>yes</i> to the question of equal rights for men and women, you might again think that the working class is the opposite. You might conclude the working class <i>does</i> think men are better at political leadership than women.</p>
+            <p>For the most part you'd be dead wrong. But let's start with where you're right.</p>
+            <p class='plot1'><img src='/img/plots/sharia.jpg' width='90%'></p>
+            <p>Indeed, what a difference! We could discuss several possible implications, one being that the gov/large class is the more religious. Let's take a look. In the gov/large model, the top most important question was how often they attended Friday prayer/Sunday services.</p>
+            <p class='plot1'><img src='/img/plots/friday.jpg' width='90%'></p>
+            <p>Dead wrong! Those in the definite gov/large class rarely attend. Of course, public religiosity is not the only measure.</p>
+            <p class='plot1'><img src='/img/plots/quran.jpg' width='90%'></p>
+            <p>Not nearly as stark, but still the working class holds the edge. Apparently believing in the merits of Islamic law has little to do with personal religiosity. Now what about the gender opinions? Is there a clear divide there? The question of women's rights was the second most important to our gov/large model.</p>
+            <p class='plot1'><img src='/img/plots/rights.jpg' width='90%'></p>
+            <p>Now this is strange. How could this question be so important to determining the definite gov/large class, but have an almost identical distribution as the working class? I myself am not totally sure. It probably has to do with how these models see <i>patterns</i> in the answers; they don't look at the questions in isolation. What I do know is that we have another gender-related question to look at. For the working class model, the fourth most important question was whether men are more suited to be in office than women.</p>
+            <p class='plot1'><img src='/img/plots/better.jpg' width='90%'></p>
+            <p>Thrown again. These are very different questions, but as humans we <i>think</i> they should go together. Our minds <i>want</i> to put a straight line through things, to imagine that if someone believes in equal rights for men and women, they might also believe men and women are equally capable in office, and vice versa. Oh, one more thing. The gov/large definites, which aren't so sure about women in office, are <span style='text-decoration: underline;'>77%</span> women. The working class definites, who mostly think women <i>are</i> equally suited, are <span style='text-decoration: underline;'>39%</span> women.</p>
+            <br><hr noshade color='#eeeeee'><br>
+            <p>As with last month, there aren't any major conclusions here. That's the point. These two models, which I was afraid would only show polarizing differences, instead mostly revealed subtleties and near-contradictions. It's an invitation to slow down and look into the details. If the machines are doing it, I'd say we better!</p>
+
+            <br><hr noshade color='#eeeeee'><br>
+            <p>See code <a href='https://github.com/bsmrvl/DS-Unit-2-Applied-Modeling/tree/master/build'>here</a></p>
+
+
+        </div>
+
+
+        <!-- <div id='foot'>Icons made by <a href="https://www.flaticon.com/authors/google" title="Google">Google</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></div> -->
+    </div>
+</div>
+
+<div id="canvas">
+	<div id="background"></div>
+</div>
+
+<script>
+    onPageLoad("Political Subtlety","");
+</script>

@@ -1,0 +1,108 @@
+[28-May-2020 13:42:17 America/Chicago] PHP Warning:  fopen(upload/runtimes.txt): failed to open stream: No such file or directory in /home2/smrvl/public_html/newfile.php on line 7
+[28-May-2020 13:42:17 America/Chicago] PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /home2/smrvl/public_html/newfile.php on line 8
+[28-May-2020 13:42:17 America/Chicago] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /home2/smrvl/public_html/newfile.php on line 9
+[27-Jun-2020 10:44:25 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home2/smrvl/public_html/toggleRadio.php on line 7
+[27-Jun-2020 10:47:02 America/Chicago] PHP Parse error:  syntax error, unexpected 'fclose' (T_STRING) in /home2/smrvl/public_html/toggleRadio.php on line 11
+[27-Jun-2020 10:47:24 America/Chicago] PHP Parse error:  syntax error, unexpected '?>' in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 10:50:39 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home2/smrvl/public_html/toggleRadio.php on line 11
+[27-Jun-2020 11:50:21 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:22 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:25 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:25 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:28 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:28 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:31 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:31 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:34 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:35 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:38 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:38 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:41 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:41 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:44 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:45 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:48 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:48 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:51 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:51 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:54 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:55 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:58 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:50:58 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:51:01 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:51:01 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:51:04 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:51:05 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:51:08 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:51:08 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:51:11 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 11:51:11 America/Chicago] PHP Warning:  file_put_contents() expects at least 2 parameters, 1 given in /home2/smrvl/public_html/toggleRadio.php on line 15
+[27-Jun-2020 16:24:24 America/Chicago] PHP Parse error:  syntax error, unexpected '.', expecting identifier (T_STRING) or function (T_FUNCTION) or const (T_CONST) or \\ (T_NS_SEPARATOR) in /home2/smrvl/public_html/toggleRadio.php on line 3
+[27-Jun-2020 16:24:27 America/Chicago] PHP Parse error:  syntax error, unexpected '.', expecting identifier (T_STRING) or function (T_FUNCTION) or const (T_CONST) or \\ (T_NS_SEPARATOR) in /home2/smrvl/public_html/toggleRadio.php on line 3
+[27-Jun-2020 16:25:10 America/Chicago] PHP Parse error:  syntax error, unexpected '.', expecting identifier (T_STRING) or function (T_FUNCTION) or const (T_CONST) or \\ (T_NS_SEPARATOR) in /home2/smrvl/public_html/toggleRadio.php on line 5
+[27-Jun-2020 16:26:47 America/Chicago] PHP Parse error:  syntax error, unexpected '$webPush' (T_VARIABLE) in /home2/smrvl/public_html/toggleRadio.php on line 24
+[27-Jun-2020 16:26:57 America/Chicago] PHP Parse error:  syntax error, unexpected '$webPush' (T_VARIABLE) in /home2/smrvl/public_html/toggleRadio.php on line 24
+[27-Jun-2020 16:28:09 America/Chicago] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home2/smrvl/public_html/toggleRadio.php on line 32
+[27-Jun-2020 16:28:12 America/Chicago] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home2/smrvl/public_html/toggleRadio.php on line 32
+[27-Jun-2020 16:30:14 America/Chicago] PHP Parse error:  syntax error, unexpected '$webPush' (T_VARIABLE) in /home2/smrvl/public_html/push.php on line 22
+[27-Jun-2020 16:31:24 America/Chicago] PHP Parse error:  syntax error, unexpected '$webPush' (T_VARIABLE) in /home2/smrvl/public_html/push.php on line 22
+[27-Jun-2020 16:37:46 America/Chicago] PHP Parse error:  syntax error, unexpected '$webPush' (T_VARIABLE) in /home2/smrvl/public_html/push.php on line 24
+[27-Jun-2020 16:39:52 America/Chicago] PHP Parse error:  syntax error, unexpected '$webPush' (T_VARIABLE) in /home2/smrvl/public_html/push.php on line 24
+[27-Jun-2020 16:40:38 America/Chicago] PHP Fatal error:  Class 'Minishlink\WebPush\Subscription' not found in /home2/smrvl/public_html/push.php on line 18
+[27-Jun-2020 16:49:24 America/Chicago] PHP Warning:  require(/home2/smrvl/public_htmlvendor/autoload.php): failed to open stream: No such file or directory in /home2/smrvl/public_html/push.php on line 3
+[27-Jun-2020 16:49:24 America/Chicago] PHP Fatal error:  require(): Failed opening required '/home2/smrvl/public_htmlvendor/autoload.php' (include_path='.:/opt/php54/lib/php') in /home2/smrvl/public_html/push.php on line 3
+[27-Jun-2020 16:49:40 America/Chicago] PHP Fatal error:  Class 'Minishlink\WebPush\Subscription' not found in /home2/smrvl/public_html/push.php on line 19
+[27-Jun-2020 16:51:07 America/Chicago] PHP Fatal error:  Class 'Minishlink\WebPush\Subscription' not found in /home2/smrvl/public_html/push.php on line 19
+[27-Jun-2020 16:52:17 America/Chicago] PHP Fatal error:  Class 'Minishlink\WebPush\Subscription' not found in /home2/smrvl/public_html/push.php on line 19
+[27-Jun-2020 16:55:03 America/Chicago] PHP Fatal error:  Class 'Minishlink\WebPush\Subscription' not found in /home2/smrvl/public_html/push.php on line 19
+[27-Jun-2020 17:00:35 America/Chicago] PHP Fatal error:  Class 'Minishlink\WebPush\Subscription' not found in /home2/smrvl/public_html/push.php on line 19
+[27-Jun-2020 17:06:23 America/Chicago] PHP Parse error:  syntax error, unexpected '$auth' (T_VARIABLE) in /home2/smrvl/public_html/push.php on line 9
+[27-Jun-2020 17:06:35 America/Chicago] PHP Fatal error:  Class 'Subscription' not found in /home2/smrvl/public_html/push.php on line 19
+[27-Jun-2020 17:07:10 America/Chicago] PHP Fatal error:  Class 'Minishlink\WebPush\Subscription' not found in /home2/smrvl/public_html/push.php on line 18
+[27-Jun-2020 17:07:26 America/Chicago] PHP Warning:  include(/vendor/minishlink/web-push/src/WebPush.php): failed to open stream: No such file or directory in /home2/smrvl/public_html/push.php on line 4
+[27-Jun-2020 17:07:26 America/Chicago] PHP Warning:  include(): Failed opening '/vendor/minishlink/web-push/src/WebPush.php' for inclusion (include_path='.:/opt/php54/lib/php') in /home2/smrvl/public_html/push.php on line 4
+[27-Jun-2020 17:07:26 America/Chicago] PHP Fatal error:  Class 'Minishlink\WebPush\Subscription' not found in /home2/smrvl/public_html/push.php on line 18
+[27-Jun-2020 17:08:06 America/Chicago] PHP Warning:  include(../vendor/minishlink/web-push/src/WebPush.php): failed to open stream: No such file or directory in /home2/smrvl/public_html/push.php on line 4
+[27-Jun-2020 17:08:06 America/Chicago] PHP Warning:  include(../vendor/minishlink/web-push/src/WebPush.php): failed to open stream: No such file or directory in /home2/smrvl/public_html/push.php on line 4
+[27-Jun-2020 17:08:06 America/Chicago] PHP Warning:  include(): Failed opening '../vendor/minishlink/web-push/src/WebPush.php' for inclusion (include_path='.:/opt/php54/lib/php') in /home2/smrvl/public_html/push.php on line 4
+[27-Jun-2020 17:08:06 America/Chicago] PHP Fatal error:  Class 'Minishlink\WebPush\Subscription' not found in /home2/smrvl/public_html/push.php on line 18
+[27-Jun-2020 17:08:17 America/Chicago] PHP Fatal error:  Class 'Minishlink\WebPush\Subscription' not found in /home2/smrvl/public_html/push.php on line 17
+[27-Jun-2020 17:11:46 America/Chicago] PHP Fatal error:  Class 'Minishlink\WebPush\Subscription' not found in /home2/smrvl/public_html/push.php on line 17
+[27-Jun-2020 17:12:20 America/Chicago] PHP Warning:  require(/home2/smrvl/public_htmlvendor/autoload.php): failed to open stream: No such file or directory in /home2/smrvl/public_html/push.php on line 3
+[27-Jun-2020 17:12:20 America/Chicago] PHP Fatal error:  require(): Failed opening required '/home2/smrvl/public_htmlvendor/autoload.php' (include_path='.:/opt/php54/lib/php') in /home2/smrvl/public_html/push.php on line 3
+[27-Jun-2020 17:13:02 America/Chicago] PHP Warning:  require(/home2/smrvl/public_html./vendor/autoload.php): failed to open stream: No such file or directory in /home2/smrvl/public_html/push.php on line 3
+[27-Jun-2020 17:13:02 America/Chicago] PHP Fatal error:  require(): Failed opening required '/home2/smrvl/public_html./vendor/autoload.php' (include_path='.:/opt/php54/lib/php') in /home2/smrvl/public_html/push.php on line 3
+[27-Jun-2020 17:13:24 America/Chicago] PHP Fatal error:  Class 'Minishlink\WebPush\Subscription' not found in /home2/smrvl/public_html/push.php on line 17
+[27-Jun-2020 17:18:48 America/Chicago] PHP Warning:  Unsupported declare 'strict_types' in /home2/smrvl/public_html/vendor/minishlink/web-push/src/Subscription.php on line 3
+[27-Jun-2020 17:18:48 America/Chicago] PHP Parse error:  syntax error, unexpected '?', expecting '&' or variable (T_VARIABLE) in /home2/smrvl/public_html/vendor/minishlink/web-push/src/Subscription.php on line 41
+[27-Jun-2020 17:23:30 America/Chicago] PHP Warning:  Unsupported declare 'strict_types' in /home2/smrvl/public_html/vendor/minishlink/web-push/src/Subscription.php on line 3
+[27-Jun-2020 17:23:30 America/Chicago] PHP Parse error:  syntax error, unexpected '?', expecting '&' or variable (T_VARIABLE) in /home2/smrvl/public_html/vendor/minishlink/web-push/src/Subscription.php on line 41
+[27-Jun-2020 17:24:30 America/Chicago] PHP Fatal error:  Class 'Minishlink\WebPush\Subscription' not found in /home2/smrvl/public_html/push.php on line 17
+[27-Jun-2020 17:25:14 America/Chicago] PHP Warning:  Unsupported declare 'strict_types' in /home2/smrvl/public_html/vendor/minishlink/web-push/src/Subscription.php on line 3
+[27-Jun-2020 17:25:14 America/Chicago] PHP Parse error:  syntax error, unexpected '?', expecting '&' or variable (T_VARIABLE) in /home2/smrvl/public_html/vendor/minishlink/web-push/src/Subscription.php on line 41
+[27-Jun-2020 17:26:32 America/Chicago] PHP Warning:  Unsupported declare 'strict_types' in /home2/smrvl/public_html/vendor/minishlink/web-push/src/Subscription.php on line 3
+[27-Jun-2020 17:26:32 America/Chicago] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home2/smrvl/public_html/vendor/minishlink/web-push/src/Subscription.php on line 66
+[27-Jun-2020 17:31:17 America/Chicago] PHP Warning:  Unsupported declare 'strict_types' in /home2/smrvl/public_html/vendor/minishlink/web-push/src/Subscription.php on line 3
+[27-Jun-2020 17:31:17 America/Chicago] PHP Parse error:  syntax error, unexpected '?', expecting '&' or variable (T_VARIABLE) in /home2/smrvl/public_html/vendor/minishlink/web-push/src/Subscription.php on line 41
+[27-Jun-2020 17:33:30 America/Chicago] PHP Warning:  Unsupported declare 'strict_types' in /home2/smrvl/public_html/vendor/minishlink/web-push/src/Subscription.php on line 3
+[27-Jun-2020 17:33:30 America/Chicago] PHP Parse error:  syntax error, unexpected '?', expecting '&' or variable (T_VARIABLE) in /home2/smrvl/public_html/vendor/minishlink/web-push/src/Subscription.php on line 41
+[10-Nov-2020 08:01:16 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home2/smrvl/public_html/fromdb.php on line 19
+[10-Nov-2020 08:02:40 America/Chicago] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home2/smrvl/public_html/fromdb.php on line 18
+[10-Nov-2020 08:05:09 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetch_all() in /home2/smrvl/public_html/fromdb.php:21
+Stack trace:
+#0 {main}
+  thrown in /home2/smrvl/public_html/fromdb.php on line 21
+[10-Nov-2020 08:06:41 America/Chicago] PHP Recoverable fatal error:  Object of class stdClass could not be converted to string in /home2/smrvl/public_html/fromdb.php on line 21
+[10-Nov-2020 08:07:21 America/Chicago] PHP Recoverable fatal error:  Object of class stdClass could not be converted to string in /home2/smrvl/public_html/fromdb.php on line 21
+[10-Nov-2020 08:10:39 America/Chicago] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home2/smrvl/public_html/fromdb.php on line 24
+[10-Nov-2020 08:36:55 America/Chicago] PHP Parse error:  syntax error, unexpected '$result' (T_VARIABLE), expecting ',' or ';' in /home2/smrvl/public_html/fromdb.php on line 23
+[10-Nov-2020 08:37:20 America/Chicago] PHP Parse error:  syntax error, unexpected '$result' (T_VARIABLE), expecting ',' or ';' in /home2/smrvl/public_html/fromdb.php on line 23
+[10-Nov-2020 09:33:02 America/Chicago] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /home2/smrvl/public_html/fromdb.php on line 20
+[10-Nov-2020 09:36:00 America/Chicago] PHP Recoverable fatal error:  Object of class mysqli_result could not be converted to string in /home2/smrvl/public_html/fromdb.php on line 21
+[10-Nov-2020 09:38:06 America/Chicago] PHP Recoverable fatal error:  Object of class stdClass could not be converted to string in /home2/smrvl/public_html/fromdb.php on line 22
+[10-Nov-2020 09:39:46 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method mysqli_result::fetch_all() in /home2/smrvl/public_html/fromdb.php:21
+Stack trace:
+#0 {main}
+  thrown in /home2/smrvl/public_html/fromdb.php on line 21
+[10-Nov-2020 09:43:56 America/Chicago] PHP Warning:  utf8_encode() expects parameter 1 to be string, object given in /home2/smrvl/public_html/fromdb.php on line 22
+[10-Nov-2020 09:47:09 America/Chicago] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home2/smrvl/public_html/fromdb.php on line 38

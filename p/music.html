@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<head>
+    <script type='text/javascript' src='/js/straight.js'></script>
+    <title>Ben Somerville - Music</title>
+    <meta name='description' content="Albums/Singles by Ben Somerville | From The Quarry - It's June On The East Coast Of Brazil - ENTANGLEMENT - Ears Under Water - The Greenstone EP - Stainless Cactus"/>
+
+    <meta property="og:title" content="Ben Somerville - Music" />
+	<meta property="og:image" content="/img/covers/quarry.jpg" />
+	<meta property="og:type" content="website" />
+
+	<meta name="twitter:creator" content="@bensomer_ville" />
+	<meta name="twitter:description" content="Albums/Singles by Ben Somerville | From The Quarry - It's June On The East Coast Of Brazil - ENTANGLEMENT - Ears Under Water - The Greenstone EP - Stainless Cactus" />
+	<meta name="twitter:image" content="https://bensomerville.com/img/covers/quarry.jpg" />
+
+    <meta charset="utf-8" http-equiv='Content-Type'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <link rel='shortcut icon' type='image/png' href='/img/icons/eastcoast.jpg' />
+    <link rel='stylesheet' type='text/css' href='/css/main.min.css' />
+</head>
+
+<div id="content">
+	<div><a class="header internal" href='/'>BEN SOMERVILLE</a></div>
+
+    <div class="albums">
+        <a class="cover internal" href='/p/album/quarry'>
+            <img class="art" src="/img/covers/quarry.jpg" width="50%" alt="From The Quarry">
+        </a>
+        <a class="cover internal" href='/p/album/eastcoast'>
+            <img class="art" src="/img/covers/eastcoast.jpg" width="50%" alt="It's June On The East Coast Of Brazil">
+        </a>
+        <a class="cover internal" href='/p/album/entanglement'>
+            <img class="art" src="/img/covers/entanglement.jpg" width="50%" alt="Entanglement">
+        </a>
+        <a class="cover internal" href='/p/album/euw'>
+            <img class="art" src="/img/covers/euw.jpg" width="50%" alt="Ears Under Water">
+        </a>
+        <a class="cover internal" href='/p/album/greenstone'>
+            <img class="art" src="/img/covers/greenstone.jpg" width="50%" alt="The Greenstone EP">
+        </a>
+        <a class="cover internal" href='/p/album/stainless'>
+            <img class="art" src="/img/covers/stainless.jpg" width="50%" alt="Stainless Cactus">
+        </a>
+    </div>
+    
+</div>
+
+<div id="canvas">
+	<div id="background"></div>
+</div>
+
+<script>
+    var thecovers = document.getElementsByClassName('art');
+    var allcoversloaded = new CustomEvent('allcoversloaded');
+    var coversLoaded = 0;
+    function loadCheck() {
+        coversLoaded++;
+        if(coversLoaded === thecovers.length){
+            document.dispatchEvent(allcoversloaded);
+        }
+    }
+    for(let i=0; i<thecovers.length; i++){
+        thecovers[i].addEventListener('load', loadCheck, {once:true})
+    }
+
+	onPageLoad("Ben Somerville - Music", {path:"/img/backgrounds/music-min.jpg", pos:"center left"}, loadEvent='allcoversloaded');
+</script>

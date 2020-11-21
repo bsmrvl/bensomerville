@@ -1,0 +1,43 @@
+{
+  "ftp://108.167.181.220@smrvl": {
+    "python.bensomerville.com": {
+      ".htaccess": {
+        "type": "-",
+        "size": 34,
+        "lmtime": 1605281447438,
+        "modified": false
+      },
+      ".well-known": {},
+      "cgi-bin": {},
+      "lib": {},
+      "lib64": {
+        "type": "l",
+        "size": 41,
+        "lmtime": 0,
+        "modified": false
+      },
+      "move.py": {
+        "type": "-",
+        "size": 304,
+        "lmtime": 1605451678941,
+        "modified": false
+      },
+      "myenv": {},
+      "test": {},
+      "testapp.fcgi": {
+        "type": "-",
+        "size": 0,
+        "lmtime": 0,
+        "modified": false
+      },
+      "testapp.py": {
+        "type": "-",
+        "size": 0,
+        "lmtime": 1605281047487,
+        "modified": false
+      },
+      "venv": {}
+    }
+  },
+  "$version": 1
+}
