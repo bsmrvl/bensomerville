@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<body>
+
+<button id='go'>GO</button>
+
+<script type='text/javascript' src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.0.min.js'></script>
+<script type='text/javascript' src='/js/main.js'></script>
+
+<script type='text/javascript'>
+
+$.ajax({
+    type: 'POST',
+    url: '/overwrite.php',
+    data: {
+        hog: '',
+        path: 'justsometext.html'
+    },
+    success: function(){
+        event = new CustomEvent('nnnext');
+        $('#go').click(function(){
+            var i = 0;
+            $(document).on('nnnext',function(){
+                strang = '<url>\n\t<loc>https://www.bensomerville.com/p/poem-/' + poem[i] + '</loc>\n\t<lastmod>2020-10-09</lastmod>\n</url>\n'
+                $.ajax({
+                    type: 'POST',
+                    url: '/append.php',
+                    data: {
+                        hog: strang,
+                        path: 'justsometext.html'
+                    },
+                    success: function(){
+                        if(i == poem.length){
+                            $(document).off('nnnext');
+                        } else {
+                            console.log(poem[i]);
+                            i++;
+                            $(document).trigger('nnnext');
+                        }
+                    }
+                })
+            });
+            $(document).trigger('nnnext');
+        });
+    }
+});
+
+</script>
+
+</body>

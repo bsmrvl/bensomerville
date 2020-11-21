@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<body>
+
+<button id='go'>GO</button>
+
+<script type='text/javascript' src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.0.min.js'></script>
+<script type='text/javascript' src='/js/main.js'></script>
+
+<script type='text/javascript'>
+
+    $(document).ready(function(){
+
+        event = new CustomEvent('nnnext');
+        $('#go').click(function(){
+            var i = 0;
+            $(document).on('nnnext',function(){
+                if(session[i]){
+                    console.log(session[i]);
+                    $.ajax({
+                        url: '/js/entanglementbackup/' + session[i] + '.json',
+                        dataType: 'text',
+                        type: 'GET',
+                        success: function(data){
+                            var all = data.toString().replace(new RegExp('<a hr','g'),'<a class=\'internal2\' hr');
+                            $.ajax({
+                                type: 'POST',
+                                url: '/overwrite.php',
+                                data: {
+                                    hog: all,
+                                    path: 'js/entanglement/'+session[i]+'.json'
+                                },
+                                success: function(){
+                                    i === session.length ? $(document).off('nnnext') :
+                                    (i++, $(document).trigger('nnnext'))
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    i === session.length ? $(document).off('nnnext') :
+                    (i++, $(document).trigger('nnnext'))
+                }
+            });
+            $(document).trigger('nnnext');
+        });
+    });
+
+</script>
+
+</body>
