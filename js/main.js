@@ -154,6 +154,7 @@ function loadJson(url, callback){
 }
 
 function fromdb(table, id, callback) {
+    linkElement && (linkElement.style.cursor = 'wait');
     var query = new XMLHttpRequest();
     query.open('POST','/fromdb.php');
     query.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -162,6 +163,7 @@ function fromdb(table, id, callback) {
             query.status === 200
                 ? callback(JSON.parse(query.responseText))
                 : console.log('Error: ' + query.status);
+                linkElement && (linkElement.style.cursor = '');
         }
     };
     query.send(`id=${id}&tab=${table}`);
