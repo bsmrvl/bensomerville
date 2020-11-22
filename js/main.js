@@ -191,7 +191,7 @@ function query(qry, callback) {
 
     function cb(data) {
         data = JSON.parse(data)
-        data.length == 0
+        data.length == 1
             ? callback(data[0])
             : callback(data);
         linkElement && (linkElement.style.cursor = '');
