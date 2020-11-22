@@ -96,6 +96,24 @@ window.addEventListener('popstate', function() {
 
 
 
+// REQUEST
+
+function request(url, type, data=null, callback) {
+    var req = new XMLHttpRequest();
+    req.open(type, url);
+    req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    req.onreadystatechange = () => {
+        if(req.readyState === 4){
+            if(req.status === 200){
+                callback(req.responseText)
+            } else {
+                console.log('Error: ' + req.status);
+            }
+        }
+    }
+    req.send(data);
+}
+
 
 // LOAD PAGE
 
@@ -122,30 +140,12 @@ function loadPage(url, fromhist) {
             : window.history.pushState('new','',histString);
         linkElement && (linkElement.style.cursor = '');
     }
-
     request(
         '/load_page.php',
         'POST',
         'page='+url,
         cb
     );
-}
-
-
-function request(url, type, data=null, callback) {
-    var req = new XMLHttpRequest();
-    req.open(type, url);
-    req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    req.onreadystatechange = () => {
-        if(req.readyState === 4){
-            if(req.status === 200){
-                callback(req.responseText)
-            } else {
-                console.log('Error: ' + req.status);
-            }
-        }
-    }
-    req.send(data);
 }
 
 
@@ -171,49 +171,32 @@ function squery(table, id, callback) {
     linkElement && (linkElement.style.cursor = 'wait');
 
     function cb(data) {
-        callback(JSON.parse(data))
+        callback(JSON.parse(data));
         linkElement && (linkElement.style.cursor = '');
     }
-
     request(
         '/squery.php',
         'POST',
         `id=${id}&tab=${table}`,
         cb
-    )
+    );
 }
-
-// function squery(table, id, callback) {
-//     linkElement && (linkElement.style.cursor = 'wait');
-//     var qreq = new XMLHttpRequest();
-//     qreq.open('POST','/squery.php');
-//     qreq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-//     qreq.onreadystatechange = () => {
-//         if (qreq.readyState === 4) {
-//             qreq.status === 200
-//                 ? callback(JSON.parse(qreq.responseText))
-//                 : console.log('Error: ' + qreq.status);
-//                 linkElement && (linkElement.style.cursor = '');
-//         }
-//     };
-//     qreq.send(`id=${id}&tab=${table}`);
-// }
 
 function query(qry, callback) {
     linkElement && (linkElement.style.cursor = 'wait');
-    var qreq = new XMLHttpRequest();
-    qreq.open('POST','/query.php');
-    qreq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    qreq.onreadystatechange = () => {
-        if (qreq.readyState === 4) {
-            qreq.status === 200
-                ? callback(JSON.parse(qreq.responseText))
-                : console.log('Error: ' + qreq.status);
-                linkElement && (linkElement.style.cursor = '');
-        }
-    };
-    qreq.send(`id=${qry}`);
+
+    function cb(data) {
+        callback(JSON.parse(data));
+        linkElement && (linkElement.style.cursor = '');
+    }
+    request(
+        '/query.php',
+        'POST'
+        `q=${qry}`,
+        cb
+    )
 }
+
 
 function poemp() {squery('poems', link, loadPoem)}
 function songp() {squery('songs', link, loadSong)}
