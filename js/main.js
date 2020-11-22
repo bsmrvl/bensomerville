@@ -114,24 +114,38 @@ function loadPage(url, fromhist) {
     document.removeEventListener('linkchange', seshp);
     bgFocus && toggleBG();
 
-    var getPage = new XMLHttpRequest();
-    getPage.open('POST','/load_page.php');
-    getPage.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    getPage.onreadystatechange = function () {
-        if (getPage.readyState === 4) {
-            if (getPage.status === 200) {
-                onPlatter(getPage.responseText);
-                var histString = '/p/' + url + (link && ('-/' + link));
-                fromhist 
-                    ? window.history.replaceState('hist','',histString)
-                    : window.history.pushState('new','',histString);
-                linkElement && (linkElement.style.cursor = '');
+    function cb(data) {
+        onPlatter(data);
+        var histString = '/p/' + url + (link && ('-/' + link));
+        fromhist 
+            ? window.history.replaceState('hist','',histString)
+            : window.history.pushState('new','',histString);
+        linkElement && (linkElement.style.cursor = '');
+    }
+
+    request(
+        '/load_page.php',
+        'POST',
+        'page='+url,
+        cb
+    );
+}
+
+
+function request(url, type, data=null, callback) {
+    var req = new XMLHttpRequest();
+    req.open(type, url);
+    req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    req.onreadystatechange = () => {
+        if(req.readyState === 4){
+            if(req.status === 200){
+                callback(req.responseText)
             } else {
-                console.log('Error: ' + getPage.status);
+                console.log('Error: ' + req.status);
             }
         }
-    };
-    getPage.send('page='+url);
+    }
+    req.send(data);
 }
 
 
@@ -153,25 +167,57 @@ function loadJson(url, callback){
     getJSON.send();
 }
 
-function fromdb(table, id, callback) {
+function squery(table, id, callback) {
     linkElement && (linkElement.style.cursor = 'wait');
-    var query = new XMLHttpRequest();
-    query.open('POST','/squery.php');
-    query.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    query.onreadystatechange = () => {
-        if (query.readyState === 4) {
-            query.status === 200
-                ? callback(JSON.parse(query.responseText))
-                : console.log('Error: ' + query.status);
+
+    function cb(data) {
+        callback(JSON.parse(data))
+        linkElement && (linkElement.style.cursor = '');
+    }
+
+    request(
+        '/squery.php',
+        'POST',
+        `id=${id}&tab=${table}`,
+        cb
+    )
+}
+
+// function squery(table, id, callback) {
+//     linkElement && (linkElement.style.cursor = 'wait');
+//     var qreq = new XMLHttpRequest();
+//     qreq.open('POST','/squery.php');
+//     qreq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+//     qreq.onreadystatechange = () => {
+//         if (qreq.readyState === 4) {
+//             qreq.status === 200
+//                 ? callback(JSON.parse(qreq.responseText))
+//                 : console.log('Error: ' + qreq.status);
+//                 linkElement && (linkElement.style.cursor = '');
+//         }
+//     };
+//     qreq.send(`id=${id}&tab=${table}`);
+// }
+
+function query(qry, callback) {
+    linkElement && (linkElement.style.cursor = 'wait');
+    var qreq = new XMLHttpRequest();
+    qreq.open('POST','/query.php');
+    qreq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    qreq.onreadystatechange = () => {
+        if (qreq.readyState === 4) {
+            qreq.status === 200
+                ? callback(JSON.parse(qreq.responseText))
+                : console.log('Error: ' + qreq.status);
                 linkElement && (linkElement.style.cursor = '');
         }
     };
-    query.send(`id=${id}&tab=${table}`);
+    qreq.send(`id=${qry}`);
 }
 
-function poemp() {fromdb('poems', link, loadPoem)}
-function songp() {fromdb('songs', link, loadSong)}
-function seshp() {fromdb('sessions', link, loadSession)}
+function poemp() {squery('poems', link, loadPoem)}
+function songp() {squery('songs', link, loadSong)}
+function seshp() {squery('sessions', link, loadSession)}
 
 // function poemp() {loadJson('/js/poems/' + link, loadPoem)}
 // function songp() {loadJson('/js/songs/' + link, loadSong)}
