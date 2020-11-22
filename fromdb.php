@@ -27,8 +27,10 @@ if ($conn -> connect_errno) {
 $qry = "SELECT * FROM {$tab} WHERE tid = \"{$id}\";";
 
 if ($result = $conn -> query($qry)) {
-    $obj = $result -> fetch_object();
-    echo json_encode($obj);
+    $all = $result -> fetch_all();
+    echo $all;
+    // $obj = $result -> fetch_object();
+    // echo json_encode($obj);
     $result -> free_result();
 }
   
