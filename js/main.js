@@ -167,20 +167,24 @@ function loadJson(url, callback){
     getJSON.send();
 }
 
-function squery(table, id, callback) {
-    linkElement && (linkElement.style.cursor = 'wait');
-
-    function cb(data) {
-        callback(JSON.parse(data));
-        linkElement && (linkElement.style.cursor = '');
-    }
-    request(
-        '/squery.php',
-        'POST',
-        `id=${id}&tab=${table}`,
-        cb
-    );
+function squery(table, id) {
+    return `SELECT * FROM ${table} WHERE tid = "${id}";`
 }
+
+// function squery(table, id, callback) {
+//     linkElement && (linkElement.style.cursor = 'wait');
+
+//     function cb(data) {
+//         callback(JSON.parse(data));
+//         linkElement && (linkElement.style.cursor = '');
+//     }
+//     request(
+//         '/squery.php',
+//         'POST',
+//         `id=${id}&tab=${table}`,
+//         cb
+//     );
+// }
 
 function query(qry, callback) {
     linkElement && (linkElement.style.cursor = 'wait');
@@ -197,14 +201,14 @@ function query(qry, callback) {
     )
 }
 
+function poemp() {query(squery('poems', link), loadPoem)}
+function songp() {query(squery('songs', link), loadSong)}
+function seshp() {query(squery('sessions', link), loadSession)}
 
-function poemp() {squery('poems', link, loadPoem)}
-function songp() {squery('songs', link, loadSong)}
-function seshp() {squery('sessions', link, loadSession)}
 
-// function poemp() {loadJson('/js/poems/' + link, loadPoem)}
-// function songp() {loadJson('/js/songs/' + link, loadSong)}
-// function seshp() {loadJson('/js/entanglement/' + link, loadSession)}
+// function poemp() {squery('poems', link, loadPoem)}
+// function songp() {squery('songs', link, loadSong)}
+// function seshp() {squery('sessions', link, loadSession)}
 
 function loadPoem(obj){
     document.getElementById('sTitle').innerHTML = obj.title;
