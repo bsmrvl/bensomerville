@@ -161,8 +161,7 @@ function fromdb(table, id, callback) {
     query.onreadystatechange = () => {
         if (query.readyState === 4) {
             query.status === 200
-                // ? callback(JSON.parse(query.responseText[0]))
-                ? console.log(JSON.parse(query.responseText)[0])
+                ? callback(JSON.parse(query.responseText)[0])
                 : console.log('Error: ' + query.status);
                 linkElement && (linkElement.style.cursor = '');
         }
