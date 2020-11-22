@@ -528,7 +528,7 @@ video {
 #social {
     vertical-align: middle;
     display: inline-grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(7,1fr);
     padding: 0 10px;
 }
 #social img {
@@ -572,10 +572,10 @@ video {
     display: inline-block;
     padding: 2px 0 0 1px;
 }
-#linkedin {
+.blogsoc {
     display: block;
     float: right;
-    padding-right: 2px;
+    padding: 0 3px;
 }
 #mainbody {
     margin-top: 50px;
@@ -801,5 +801,9 @@ video {
     }
     .blogpost {
         grid-template-columns: 1fr;
+    }
+    #social img {
+        height: 30px;
+        padding: 4px;
     }
 }
