@@ -14,6 +14,8 @@ var pSpot = document.getElementById('pSpot');
 var pYou = document.getElementById('pYou');
 var pSC = document.getElementById('pSC');
 var playpause = document.getElementById('playpause');
+var playb = document.getElementById('playb');
+var pauseb = document.getElementById('pauseb');
 var scrub = document.getElementById('scrub');
 var scrubvis = document.getElementById('scrubvis');
 var sharesong = document.getElementById('sharesong');
@@ -338,10 +340,14 @@ function showLoading(yes) {
 
 for(let i=0; i<Q.length; i++) {
     Q[i].a.addEventListener("play", () => {
-        playpause.setAttribute("src", "/img/icons/pause.png")
+        playb.style.display = 'none';
+        pauseb.style.display = 'inline';
+        // playpause.setAttribute("src", "/img/icons/pause.png")
     }); 
     Q[i].a.addEventListener("pause", () => {
-        playpause.setAttribute("src", "/img/icons/play.png")
+        pauseb.style.display = 'none';
+        playb.style.display = 'inline';
+        // playpause.setAttribute("src", "/img/icons/play.png")
     }); 
     Q[i].a.addEventListener("ended", e => next(e, true));
 }

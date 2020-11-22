@@ -396,6 +396,12 @@ tr a {
     padding-right: 6px;
     align-items: center
 }
+#playpause {
+    margin-bottom: -4px;
+}
+.playpause {
+    width: 100%;
+}
 .mButton {
     width: 100%;
     padding: 0 2px
