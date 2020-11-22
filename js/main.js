@@ -195,7 +195,7 @@ function query(qry, callback) {
     }
     request(
         '/query.php',
-        'POST'
+        'POST',
         `q=${qry}`,
         cb
     )
