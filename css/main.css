@@ -377,10 +377,11 @@ tr a {
 }
 #pLinks {
     display: grid;
-    grid-template-columns: auto auto auto
+    grid-template-columns: auto auto auto;
+    padding-right: 2px;
 }
 #pLinks img {
-    width: 40px;
+    width: 36px;
     padding: 4px
 }
 #seek {
