@@ -190,7 +190,10 @@ function query(qry, callback) {
     linkElement && (linkElement.style.cursor = 'wait');
 
     function cb(data) {
-        callback(JSON.parse(data)[0]);
+        data = JSON.parse(data)
+        data.length == 0
+            ? callback(data[0])
+            : callback(data);
         linkElement && (linkElement.style.cursor = '');
     }
     request(
