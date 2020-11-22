@@ -13,7 +13,6 @@ var tracklength = document.getElementById('tracklength');
 var pSpot = document.getElementById('pSpot');
 var pYou = document.getElementById('pYou');
 var pSC = document.getElementById('pSC');
-var playpause = document.getElementById('playpause');
 var playb = document.getElementById('playb');
 var pauseb = document.getElementById('pauseb');
 var scrub = document.getElementById('scrub');
@@ -332,28 +331,26 @@ function share() {
     setTimeout(() => {copied.style.display = 'none'}, 2000);
 }
 
-function showLoading(yes) {
-    yes
-        ? (aLoading.style.display = 'block', tracktime.style.display = 'none')
-        : (aLoading.style.display = 'none', tracktime.style.display = 'block')
+function showLoading(sw) {
+    sw
+        ? (tracktime.style.display = 'none', aLoading.style.display = 'block')
+        : (aLoading.style.display = 'none', tracktime.style.display = 'block');
+}
+
+function playOrPause(sw) {
+    sw
+        ? (playb.style.display = 'none', pauseb.style.display = 'inline')
+        : (pauseb.style.display = 'none', playb.style.display = 'inline');
 }
 
 for(let i=0; i<Q.length; i++) {
-    Q[i].a.addEventListener("play", () => {
-        playb.style.display = 'none';
-        pauseb.style.display = 'inline';
-        // playpause.setAttribute("src", "/img/icons/pause.png")
-    }); 
-    Q[i].a.addEventListener("pause", () => {
-        pauseb.style.display = 'none';
-        playb.style.display = 'inline';
-        // playpause.setAttribute("src", "/img/icons/play.png")
-    }); 
+    Q[i].a.addEventListener("play", () => playOrPause(true)); 
+    Q[i].a.addEventListener("pause", () => playOrPause(false)); 
     Q[i].a.addEventListener("ended", e => next(e, true));
 }
 document.getElementById('prev').addEventListener('click', prev);
 document.getElementById('next').addEventListener('click', next);
-playpause.addEventListener('click', playtoggle);
+document.getElementById('playpause').addEventListener('click', playtoggle);
 
 scrub.addEventListener('pointerdown', scrubber);
 sharesong.addEventListener('click', share);
