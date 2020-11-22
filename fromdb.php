@@ -29,7 +29,7 @@ $qry = "SELECT * FROM {$tab} WHERE tid = \"{$id}\";";
 if ($result = $conn -> query($qry)) {
     while ($row = $result -> fetch_assoc()) {
         // $all[] = $row;
-        echo $row
+        echo $row;
     }
     // $all = $result -> fetch_all();
     // echo $all;
