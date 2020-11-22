@@ -542,6 +542,11 @@ video {
     height: 32px;
     padding: 5px;
 }
+#iconattr {
+    color: rgba(255,255,255,.1);
+} #iconattr a:hover {
+    color: whitesmoke;
+}
 
 /* BLOG */
 
