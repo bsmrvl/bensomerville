@@ -162,7 +162,7 @@ function fromdb(table, id, callback) {
         if (query.readyState === 4) {
             query.status === 200
                 // ? callback(JSON.parse(query.responseText))
-                ? console.log(query.responseText)
+                ? console.log(query.responseText[0])
                 : console.log('Error: ' + query.status);
                 linkElement && (linkElement.style.cursor = '');
         }
