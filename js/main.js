@@ -156,7 +156,7 @@ function loadJson(url, callback){
 function fromdb(table, id, callback) {
     linkElement && (linkElement.style.cursor = 'wait');
     var query = new XMLHttpRequest();
-    query.open('POST','/fromdb.php');
+    query.open('POST','/squery.php');
     query.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     query.onreadystatechange = () => {
         if (query.readyState === 4) {
