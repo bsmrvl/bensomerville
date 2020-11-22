@@ -1,8 +1,5 @@
 <?php
 
-$id = $_POST['id'];
-$tab = $_POST['tab'];
-
 $conn = new mysqli(
     "localhost",
     "smrvl_gen",
@@ -15,6 +12,8 @@ if ($conn -> connect_errno) {
     exit();
 }
 
+$id = $_POST['id'];
+$tab = $_POST['tab'];
 $qry = "SELECT * FROM {$tab} WHERE tid = \"{$id}\";";
 
 if ($result = $conn -> query($qry)) {
