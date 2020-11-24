@@ -324,7 +324,7 @@ function loadPosts(blog, starting){
             ints2[j].addEventListener('click', intLink)
         }
 
-        last = parseInt(posts[2].bpos);
+        lastShownPost = parseInt(posts[2].bpos);
     }
 
     var qry;
@@ -337,8 +337,6 @@ function loadPosts(blog, starting){
         qry,
         readyPosts
     );
-
-    return last;
 }
 
 
