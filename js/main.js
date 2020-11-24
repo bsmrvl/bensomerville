@@ -215,29 +215,29 @@ function loadSession(obj){
 }
 
 
-    // SESSION BG FOCUS
+// SESSION BG FOCUS
 
-    var bgFocus = false;
+var bgFocus = false;
 
-    function toggleBG() {
-        if(bgFocus) {
-            pageContent.style.zIndex = 0;
-            document.querySelector('.backcanvas').style.zIndex = -7;
-            canv.style.zIndex = 0;
-            bgFocus = false;
-        } else {
-            pageContent.style.zIndex = 50;
-            document.querySelector('.backcanvas').style.zIndex = 50;
-            canv.style.zIndex = 55;
-            bgFocus = true;
-        }
+function toggleBG() {
+    if(bgFocus) {
+        pageContent.style.zIndex = 0;
+        document.querySelector('.backcanvas').style.zIndex = -7;
+        canv.style.zIndex = 0;
+        bgFocus = false;
+    } else {
+        pageContent.style.zIndex = 50;
+        document.querySelector('.backcanvas').style.zIndex = 50;
+        canv.style.zIndex = 55;
+        bgFocus = true;
     }
+}
 
-    function setBgToggle() {           // Called by session.html
-        canv.removeEventListener('click', toggleBG)
-        bgFocus = false;	
-        canv.addEventListener('click', toggleBG)
-    }
+function setBgToggle() {           // Called by session.html
+    canv.removeEventListener('click', toggleBG)
+    bgFocus = false;	
+    canv.addEventListener('click', toggleBG)
+}
 
     
 function loadPosts(blog, starting, callback){
@@ -309,21 +309,22 @@ function loadPosts(blog, starting, callback){
     );
 }
 
-    // DYNAMIC POST LOADING
+// DYNAMIC POST LOADING
 
-    function callLoadPosts(blog) {
-        var lastShownPost;
-        function updateLast(n){
-            lastShownPost = n;
-        }
-        loadPosts(blog, null, updateLast);
-        
-        var loadMore = document.getElementById('loadmore');
-        loadMore.addEventListener('click', e => {
-            linkElement = e.target;
-            lastShownPost > 1 && loadPosts(blog, lastShownPost, updateLast);
-        });
+function callLoadPosts(blog) {
+    var lastShownPost;
+    function updateLast(n){
+        lastShownPost = n;
     }
+    loadPosts(blog, null, updateLast);
+    
+    var loadMore = document.getElementById('loadmore');
+    loadMore.addEventListener('click', e => {
+        linkElement = e.target;
+        loadPosts(blog, lastShownPost, updateLast);
+        lastShownPost < 4 && (loadMore.style.display = 'none');
+    });
+}
 
 
 // READY FOR AUDIO EVENTS
