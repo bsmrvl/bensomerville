@@ -313,7 +313,7 @@ function loadPosts(blog, starting){
 
     function readyPosts(posts){
         console.log(posts);
-        for (const post in posts){
+        for(let i=0; i<posts.length; i++){
             addPost(post);
         }
 
