@@ -324,6 +324,12 @@ function loadPosts(blog, starting){
         }
     }
 
+    var qry;
+    if(starting){
+        qry = `SELECT * FROM posts WHERE bid="${blog}" AND bpos<${starting} ORDER BY bpos DESC LIMIT 3`;
+    } else {
+        qry = `SELECT * FROM posts WHERE bid="${blog}" ORDER BY bpos DESC LIMIT 3`;
+    }
     query(
         `SELECT * FROM posts WHERE bid="${blog}" AND bpos<${starting} ORDER BY bpos DESC LIMIT 3`,
         readyPosts
