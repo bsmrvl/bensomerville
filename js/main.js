@@ -105,12 +105,14 @@ function request(url, type, data=null, callback) {
     req.onreadystatechange = () => {
         if(req.readyState === 4){
             if(req.status === 200){
-                callback(req.responseText)
+                callback(req.responseText);
+                linkElement && (linkElement.style.cursor = '');
             } else {
                 console.log('Error: ' + req.status);
             }
         }
     }
+    linkElement && (linkElement.style.cursor = 'wait');
     req.send(data);
 }
 
@@ -126,9 +128,8 @@ function onPlatter(html) {
 }
 
 function loadPage(url, fromhist) {
-    linkElement && (linkElement.style.cursor = 'wait');
-    document.removeEventListener('linkchange', poemp),
-    document.removeEventListener('linkchange', songp),
+    document.removeEventListener('linkchange', poemp);
+    document.removeEventListener('linkchange', songp);
     document.removeEventListener('linkchange', seshp);
     bgFocus && toggleBG();
 
@@ -138,12 +139,11 @@ function loadPage(url, fromhist) {
         fromhist 
             ? window.history.replaceState('hist','',histString)
             : window.history.pushState('new','',histString);
-        linkElement && (linkElement.style.cursor = '');
     }
     request(
         '/load_page.php',
         'POST',
-        'page='+url,
+        `page=${url}`,
         cb
     );
 }
@@ -157,14 +157,11 @@ function squery(table, id) {
 }
 
 function query(qry, callback) {
-    linkElement && (linkElement.style.cursor = 'wait');
-
     function cb(data) {
         data = JSON.parse(data);
         data.length == 1
             ? callback(data[0])
             : callback(data);
-        linkElement && (linkElement.style.cursor = '');
     }
     request(
         '/query.php',
@@ -303,15 +300,12 @@ function loadPosts(blog, starting, callback){
     starting
         ? qry = `SELECT * FROM posts WHERE bid="${blog}" AND bpos<${starting} ORDER BY bpos DESC LIMIT 3`
         : qry = `SELECT * FROM posts WHERE bid="${blog}" ORDER BY bpos DESC LIMIT 3`;
-    query(
-        qry,
-        readyPosts
-    );
+    query(qry, readyPosts);
 }
 
 // DYNAMIC POST LOADING
 
-function callLoadPosts(blog) {
+function callLoadPosts(blog) {         // called by news.html and datascience.html
     var lastShownPost;
     function updateLast(n){
         lastShownPost = n;
