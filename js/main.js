@@ -312,7 +312,9 @@ function loadPosts(blog, starting){
     }
 
     function readyPosts(posts){
-        posts = JSON.parse(posts)
+        console.log(posts);
+        posts = JSON.parse(posts);
+        console.log(posts);
         for (const post in posts){
             addPost(post);
         }
