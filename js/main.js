@@ -331,7 +331,7 @@ function loadPosts(blog, starting){
         qry = `SELECT * FROM posts WHERE bid="${blog}" ORDER BY bpos DESC LIMIT 3`;
     }
     query(
-        `SELECT * FROM posts WHERE bid="${blog}" AND bpos<${starting} ORDER BY bpos DESC LIMIT 3`,
+        qry,
         readyPosts
     );
 }
