@@ -281,7 +281,11 @@ function loadPosts(blog, starting, callback){
 
         var postDate = document.createElement('div');
         postDate.setAttribute('class','postdate');
-        postDate.innerHTML = json.dat;
+        if(json.img){
+            postDate.innerHTML = json.dat + '<br>' + `<img src="${json.img}" style="padding-top: 8px;">`;
+        } else {
+            postDate.innerHTML = json.dat;
+        }
         blogPost.appendChild(postDate);
 
         var rightCol = document.createElement('div');
