@@ -175,7 +175,6 @@ function query(qry, callback) {
     linkElement && (linkElement.style.cursor = 'wait');
 
     function cb(data) {
-        console.log(data);
         data = JSON.parse(data);
         data.length == 1
             ? callback(data[0])
@@ -314,6 +313,7 @@ function loadPosts(blog, starting){
 
     function readyPosts(posts){
         for (const post in posts){
+            console.log(post);
             addPost(post);
         }
 
