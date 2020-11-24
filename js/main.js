@@ -312,8 +312,8 @@ function loadPosts(blog, starting){
     }
 
     function readyPosts(posts){
+        console.log(posts);
         for (const post in posts){
-            console.log(post);
             addPost(post);
         }
 
