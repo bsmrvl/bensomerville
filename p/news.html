@@ -41,6 +41,7 @@
 	// loadPosts(allPosts.slice(0,3));
 	// var shown = 3;
 	var last = loadPosts('phl');
+	console.log(last);
 	var loadMore = document.getElementById('loadmore');
 	loadMore.addEventListener('click', function() {
 		loadPosts('phl', last);
