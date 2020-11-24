@@ -45,6 +45,7 @@
 	// console.log("POS!" + last);
 	var loadMore = document.getElementById('loadmore');
 	loadMore.addEventListener('click', function() {
+		console.log("pos: " + lastShownPost);
 		loadPosts('phl', lastShownPost);
 	});
 	onPageLoad("Ben Somerville - Newsletter", {path:'/img/backgrounds/2019-min.jpg'});

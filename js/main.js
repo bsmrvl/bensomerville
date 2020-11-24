@@ -269,7 +269,6 @@ function loadPosts(blog, starting){
     // var i = 0;
     var postList = document.getElementsByClassName('blogposts')[0];
     var postBlock = document.createElement('div');
-    var last;
 
     function addPost(json){
         var lBreak = document.createElement('p');
