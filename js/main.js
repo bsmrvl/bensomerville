@@ -265,12 +265,12 @@ function loadSession(obj){
     }
 
     
-function loadPosts(posts){
-    var i = 0;
+function loadPosts(blog, starting){
+    // var i = 0;
     postList = document.getElementsByClassName('blogposts')[0];
     postBlock = document.createElement('div');
 
-    function readyPost(json){
+    function addPost(json){
         var lBreak = document.createElement('p');
         lBreak.innerHTML = "<br><hr noshade color='#eeeeee'><br><br>";
         postBlock.appendChild(lBreak);
@@ -281,7 +281,7 @@ function loadPosts(posts){
 
         var postDate = document.createElement('div');
         postDate.setAttribute('class','postdate');
-        postDate.innerHTML = json.date;
+        postDate.innerHTML = json.dat;
         blogPost.appendChild(postDate);
 
         var rightCol = document.createElement('div');
@@ -309,20 +309,25 @@ function loadPosts(posts){
         linkSpan.setAttribute('class','postlink');
         postLink.appendChild(linkSpan);
         blogPost.appendChild(postLink);
+    }
 
-        i++;
-        if(i < posts.length){
-            loadJson('/js/posts/' + posts[i], readyPost);
-        } else {
-            postList.appendChild(postBlock);
-            var ints2 = document.getElementsByClassName('internal2');
-            for(let j=0; j<ints2.length; j++){
-                ints2[j].addEventListener('click', intLink)
-            }
+    function readyPosts(posts){
+        posts = JSON.parse(posts)
+        for (const post in posts){
+            addPost(post);
+        }
+
+        postList.appendChild(postBlock);
+        var ints2 = document.getElementsByClassName('internal2');
+        for(let j=0; j<ints2.length; j++){
+            ints2[j].addEventListener('click', intLink)
         }
     }
 
-    loadJson('/js/posts/' + posts[i], readyPost);
+    query(
+        `SELECT * FROM posts WHERE bid=${blog} AND bpos<${starting} ORDER BY bpos DESC LIMIT 3`,
+        readyPosts
+    );
 }
 
 
