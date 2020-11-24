@@ -314,7 +314,7 @@ function loadPosts(blog, starting){
     function readyPosts(posts){
         console.log(posts);
         for(let i=0; i<posts.length; i++){
-            addPost(post);
+            addPost(posts[i]);
         }
 
         postList.appendChild(postBlock);
