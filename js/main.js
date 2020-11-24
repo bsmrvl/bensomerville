@@ -265,7 +265,7 @@ function loadSession(obj){
     }
 
     
-function loadPosts(blog, starting){
+function loadPosts(blog, starting, callback){
     // var i = 0;
     var postList = document.getElementsByClassName('blogposts')[0];
     var postBlock = document.createElement('div');
@@ -323,8 +323,7 @@ function loadPosts(blog, starting){
             ints2[j].addEventListener('click', intLink)
         }
 
-        lastShownPost = parseInt(posts[2].bpos);
-        console.log('should be pos: ' + lastShownPost);
+        callback(parseInt(posts[2].bpos));
     }
 
     var qry;
