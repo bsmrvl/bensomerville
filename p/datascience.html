@@ -37,15 +37,16 @@
 </div>
 
 <script>
-	var lastShownPost;
-	function updateLast(n){
-		lastShownPost = n;
-	}
-	loadPosts('ds', lastShownPost, updateLast);
-	var loadMore = document.getElementById('loadmore');
-	loadMore.addEventListener('click', e => {
-		linkElement = e.target;
-		lastShownPost > 1 && loadPosts('ds', lastShownPost, updateLast);
-	});
+	// var lastShownPost;
+	// function updateLast(n){
+	// 	lastShownPost = n;
+	// }
+	// loadPosts('ds', lastShownPost, updateLast);
+	// var loadMore = document.getElementById('loadmore');
+	// loadMore.addEventListener('click', e => {
+	// 	linkElement = e.target;
+	// 	lastShownPost > 1 && loadPosts('ds', lastShownPost, updateLast);
+	// });
+	callLoadPosts('ds');
 	onPageLoad("Ben Somerville - Data Science", {path:"/img/backgrounds/ithought.jpg"});
 </script>

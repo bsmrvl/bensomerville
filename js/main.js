@@ -149,23 +149,8 @@ function loadPage(url, fromhist) {
 }
 
 
-// LOAD JSON PAGES
+// LOAD FROM DB
 
-function loadJson(url, callback){
-    var getJSON = new XMLHttpRequest();
-    getJSON.open('GET', url + '.json');
-    getJSON.onreadystatechange = () => {
-        if(getJSON.readyState === 4){
-            if(getJSON.status === 200){
-                var json = JSON.parse(getJSON.responseText);
-                callback(json);
-            } else {
-                console.log('error: ' + getJSON.status);
-            }
-        }
-    }
-    getJSON.send();
-}
 
 function squery(table, id) {
     return `SELECT * FROM ${table} WHERE tid = "${id}";`
@@ -194,10 +179,6 @@ function songp() {query(squery('songs', link), loadSong)}
 function seshp() {query(squery('sessions', link), loadSession)}
 
 
-// function poemp() {squery('poems', link, loadPoem)}
-// function songp() {squery('songs', link, loadSong)}
-// function seshp() {squery('sessions', link, loadSession)}
-
 function loadPoem(obj){
     document.getElementById('sTitle').innerHTML = obj.title;
     document.getElementById('sText').innerHTML = obj.words;
@@ -216,10 +197,7 @@ function loadSong(obj){
 
     setImageEvent('/'+obj.img);
 
-    var ints2 = document.getElementsByClassName('internal2');
-    for(let i=0; i<ints2.length; i++){
-        ints2[i].addEventListener('click', intLink)
-    }
+    resetDynInternals();
 }
 
 function loadSession(obj){
@@ -233,10 +211,7 @@ function loadSession(obj){
     document.getElementById('sLoc').innerHTML = obj.loc,
     document.getElementById('sRec').innerHTML = obj.rec;
 
-    var ints2 = document.getElementsByClassName('internal2');
-    for(var i=0; i<ints2.length; i++){
-        ints2[i].addEventListener('click', intLink)
-    }
+    resetDynInternals();
 }
 
 
@@ -266,7 +241,6 @@ function loadSession(obj){
 
     
 function loadPosts(blog, starting, callback){
-    // var i = 0;
     var postList = document.getElementsByClassName('blogposts')[0];
     var postBlock = document.createElement('div');
 
@@ -319,27 +293,37 @@ function loadPosts(blog, starting, callback){
         for(let i=0; i<posts.length; i++){
             addPost(posts[i]);
         }
-
         postList.appendChild(postBlock);
-        var ints2 = document.getElementsByClassName('internal2');
-        for(let j=0; j<ints2.length; j++){
-            ints2[j].addEventListener('click', intLink)
-        }
+        resetDynInternals();
 
         callback(parseInt(posts[posts.length-1].bpos));
     }
 
     var qry;
-    if(starting){
-        qry = `SELECT * FROM posts WHERE bid="${blog}" AND bpos<${starting} ORDER BY bpos DESC LIMIT 3`;
-    } else {
-        qry = `SELECT * FROM posts WHERE bid="${blog}" ORDER BY bpos DESC LIMIT 3`;
-    }
+    starting
+        ? qry = `SELECT * FROM posts WHERE bid="${blog}" AND bpos<${starting} ORDER BY bpos DESC LIMIT 3`
+        : qry = `SELECT * FROM posts WHERE bid="${blog}" ORDER BY bpos DESC LIMIT 3`;
     query(
         qry,
         readyPosts
     );
 }
+
+    // DYNAMIC POST LOADING
+
+    function callLoadPosts(blog) {
+        var lastShownPost;
+        function updateLast(n){
+            lastShownPost = n;
+        }
+        loadPosts(blog, null, updateLast);
+        
+        var loadMore = document.getElementById('loadmore');
+        loadMore.addEventListener('click', e => {
+            linkElement = e.target;
+            lastShownPost > 1 && loadPosts(blog, lastShownPost, updateLast);
+        });
+    }
 
 
 // READY FOR AUDIO EVENTS
@@ -387,7 +371,8 @@ function intLink(e) {
         : refresh('home');
 }
 
-function setExtPlayers(links){
+function setExtPlayers(){
+    var links = document.getElementsByTagName('a');
     for(let i=0; i<links.length; i++){
         links[i].addEventListener('click', e => {
             var n = e.currentTarget.getAttribute("href");
@@ -396,14 +381,24 @@ function setExtPlayers(links){
     }
 }
 
-function resetInternals(ints){
+function resetInternals(){
+    var ints = document.getElementsByClassName('internal');
     for(let i=0; i<ints.length; i++){
         ints[i].removeEventListener('click', intLink);
         ints[i].addEventListener('click', intLink);
     }
 }
 
-function setPlayers(players){
+function resetDynInternals(){
+    var ints2 = document.getElementsByClassName('internal2');
+    for(let i=0; i<ints2.length; i++){
+        ints2[i].removeEventListener('click', intLink);
+        ints2[i].addEventListener('click', intLink);
+    }
+}
+
+function setPlayers(){
+    var players = document.getElementsByClassName('player');
     for(let i=0; i<players.length; i++){
         players[i].addEventListener('click', e => {
             e.stopPropagation();
@@ -434,12 +429,9 @@ function onPageLoad(n="Ben Somerville", bg={path:null, pos:null, siz:null, rep:n
     if(bg.siz) canv.style.backgroundSize = bg.siz;
     if(bg.rep) canv.style.backgroundRepeat = bg.rep;
 
-    var links = document.getElementsByTagName('a');
-    setExtPlayers(links);
-    var internals = document.getElementsByClassName('internal');
-    resetInternals(internals);
-    var players = document.getElementsByClassName('player');
-    setPlayers(players);
+    setExtPlayers();
+    resetInternals();
+    setPlayers();
 
     cont && new ResizeSensor(cont, () => updateHeight(cont, canv));
     window.scroll(0, 0);
