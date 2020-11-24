@@ -312,7 +312,6 @@ function loadPosts(blog, starting, callback){
     }
 
     function readyPosts(posts){
-        console.log(posts);
         for(let i=0; i<posts.length; i++){
             addPost(posts[i]);
         }
@@ -323,7 +322,7 @@ function loadPosts(blog, starting, callback){
             ints2[j].addEventListener('click', intLink)
         }
 
-        callback(parseInt(posts[2].bpos));
+        callback(parseInt(posts[posts.length-1].bpos));
     }
 
     var qry;

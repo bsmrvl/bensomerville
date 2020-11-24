@@ -37,21 +37,14 @@
 </div>
 
 <script>
-	// allPosts = ['jamsjamsjams','tripwiredquarry','masterypatience','somervillefunk','yourownadvice','weeklycharcuterie','becomingatradesman','unusualvocalrecording','exclusiveperformance','shorthistoryof','applaudthedebut'];
-	// loadPosts(allPosts.slice(0,3));
-	// var shown = 3;
 	var lastShownPost;
 	function updateLast(n){
 		lastShownPost = n;
 	}
 	loadPosts('phl', lastShownPost, updateLast);
-	// console.log("POS!" + last);
 	var loadMore = document.getElementById('loadmore');
 	loadMore.addEventListener('click', function() {
-		console.log("pos: " + lastShownPost);
 		loadPosts('phl', lastShownPost, updateLast);
 	});
 	onPageLoad("Ben Somerville - Newsletter", {path:'/img/backgrounds/2019-min.jpg'});
-
-
 </script>
