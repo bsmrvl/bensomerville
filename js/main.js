@@ -321,8 +321,7 @@ function callLoadPosts(blog) {
     var loadMore = document.getElementById('loadmore');
     loadMore.addEventListener('click', e => {
         linkElement = e.target;
-        loadPosts(blog, lastShownPost, updateLast);
-        lastShownPost < 4 && (loadMore.style.display = 'none');
+        lastShownPost > 1 && loadPosts(blog, lastShownPost, updateLast);
     });
 }
 
