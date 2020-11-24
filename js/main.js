@@ -171,21 +171,6 @@ function squery(table, id) {
     return `SELECT * FROM ${table} WHERE tid = "${id}";`
 }
 
-// function squery(table, id, callback) {
-//     linkElement && (linkElement.style.cursor = 'wait');
-
-//     function cb(data) {
-//         callback(JSON.parse(data));
-//         linkElement && (linkElement.style.cursor = '');
-//     }
-//     request(
-//         '/squery.php',
-//         'POST',
-//         `id=${id}&tab=${table}`,
-//         cb
-//     );
-// }
-
 function query(qry, callback) {
     linkElement && (linkElement.style.cursor = 'wait');
 
