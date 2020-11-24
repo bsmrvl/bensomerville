@@ -324,6 +324,7 @@ function loadPosts(blog, starting){
         }
 
         lastShownPost = parseInt(posts[2].bpos);
+        console.log('should be pos: ' + lastShownPost);
     }
 
     var qry;
