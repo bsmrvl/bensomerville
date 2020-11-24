@@ -267,8 +267,9 @@ function loadSession(obj){
     
 function loadPosts(blog, starting){
     // var i = 0;
-    postList = document.getElementsByClassName('blogposts')[0];
-    postBlock = document.createElement('div');
+    var postList = document.getElementsByClassName('blogposts')[0];
+    var postBlock = document.createElement('div');
+    var last;
 
     function addPost(json){
         var lBreak = document.createElement('p');
@@ -322,6 +323,8 @@ function loadPosts(blog, starting){
         for(let j=0; j<ints2.length; j++){
             ints2[j].addEventListener('click', intLink)
         }
+
+        last = parseInt(posts[-1].bpos);
     }
 
     var qry;
@@ -334,6 +337,8 @@ function loadPosts(blog, starting){
         qry,
         readyPosts
     );
+
+    return last;
 }
 
 
