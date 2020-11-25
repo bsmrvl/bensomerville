@@ -1,3 +1,10 @@
+.incode {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgba(.7,.7,.7,.1);
+    font-size: .85em;
+    font-weight: bold;
+}
+
 #pageLoading {
     visibility: hidden;
     position: fixed;
