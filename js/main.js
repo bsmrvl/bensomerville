@@ -312,11 +312,13 @@ function callLoadPosts(blog) {         // called by news.html and datascience.ht
     }
     loadPosts(blog, null, updateLast);
     
-    var loadMore = document.getElementById('loadmore');
-    loadMore.addEventListener('click', e => {
-        linkElement = e.target;
-        lastShownPost > 1 && loadPosts(blog, lastShownPost, updateLast);
-    });
+    var loadMore;
+    if (loadMore = document.getElementById('loadmore')){
+        loadMore.addEventListener('click', e => {
+            linkElement = e.target;
+            lastShownPost > 1 && loadPosts(blog, lastShownPost, updateLast);
+        });
+    }
 }
 
 
