@@ -414,7 +414,7 @@ function updateHeight(cont, canv) {
         : (canv.style.height = window.innerHeight+'px');
 }
 
-function onPageLoad(n="Ben Somerville", bg={path:null, pos:null, siz:null, rep:null}, loadEvent) {
+function onPageLoad(n="Ben Somerville", bg={path:null, pos:null, siz:null, rep:null, att:null}, loadEvent) {
     document.title = n, 
 
     cont = document.getElementById('content'),
@@ -424,6 +424,7 @@ function onPageLoad(n="Ben Somerville", bg={path:null, pos:null, siz:null, rep:n
     if(bg.pos) canv.style.backgroundPosition = bg.pos;
     if(bg.siz) canv.style.backgroundSize = bg.siz;
     if(bg.rep) canv.style.backgroundRepeat = bg.rep;
+    if(bg.att) canv.style.backgroundAttachment = bg.att;
 
     setExtPlayers();
     resetInternals();
