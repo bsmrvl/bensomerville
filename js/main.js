@@ -201,7 +201,7 @@ function loadSession(obj){
     canv.style.backgroundSize = 'contain';
     setImageEvent('/'+obj.img);
     document.querySelector('.backcanvas').style.backgroundImage = 'url(/'+obj.img+')';
-    console.log(obj.v);
+    console.log(obj);
     obj.v 
         ? (canv.style.backgroundRepeat = 'no-repeat')
         : (canv.style.backgroundRepeat = 'repeat-x'),
