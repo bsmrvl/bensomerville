@@ -454,7 +454,10 @@ for(var i=0; i<shuffless.length; i++){
 
 // FIRST LOAD
 
-newShuffle();
+// newShuffle();
+playlist = entanglement;
+playhead = 0;
+playNew();
 
 if (sessionStorage.getItem('firstpage') === null) {
     refresh('home');
