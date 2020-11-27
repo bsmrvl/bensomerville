@@ -529,7 +529,7 @@ video {
 
 #footer {
     background-color: #131313;
-    z-index: 10;
+    z-index: 25;
 }
 #footCon {
     padding: 27px 0;
