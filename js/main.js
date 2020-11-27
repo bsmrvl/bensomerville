@@ -201,8 +201,7 @@ function loadSession(obj){
     canv.style.backgroundSize = 'contain';
     setImageEvent('/'+obj.img);
     document.querySelector('.backcanvas').style.backgroundImage = 'url(/'+obj.img+')';
-    console.log(parseInt(obj.vert));
-    obj.vert
+    parseInt(obj.vert)
         ? (canv.style.backgroundRepeat = 'no-repeat')
         : (canv.style.backgroundRepeat = 'repeat-x'),
     document.getElementById('sDate').innerHTML = obj.dat,
