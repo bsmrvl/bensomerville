@@ -202,7 +202,7 @@ function loadSession(obj){
     setImageEvent('/'+obj.img);
     document.querySelector('.backcanvas').style.backgroundImage = 'url(/'+obj.img+')';
     obj.v 
-        ? (canv.style.backgroundRepeat = 'no-repeat', console.log('vertical'))
+        ? (canv.style.backgroundRepeat = 'no-repeat', console.log(obj.v))
         : (canv.style.backgroundRepeat = 'repeat-x'),
     document.getElementById('sDate').innerHTML = obj.dat,
     document.getElementById('sLoc').innerHTML = obj.loc,
