@@ -253,7 +253,7 @@ function loadPosts(blog, starting, callback){
         var postDate = document.createElement('div');
         postDate.setAttribute('class','postdate');
         if(json.img){
-            postDate.innerHTML = json.dat + '<br>' + `<img src="${json.img}" style="padding-top: 8px;">`;
+            postDate.innerHTML = json.dat + '<br>' + `<img src="${json.img}" style="padding-top: 8px;" alt="Blog Post Sample Image">`;
         } else {
             postDate.innerHTML = json.dat;
         }

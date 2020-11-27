@@ -611,11 +611,6 @@ video {
     padding: 0 0 10px 40px;
     font-size: inherit;
 }
-#bgbg {
-    position: fixed;
-    height: 100%;
-    z-index: -5;
-}
 .plot1 {
     text-align: center;
     margin: 8px 0 5px 0;
