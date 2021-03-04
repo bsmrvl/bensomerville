@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<head>
+    <script type='text/javascript' src='/js/straight.js'></script>
+    <title>Family Promise - Overhauling a Data Science API</title>
+    <meta name='description' content="Jumping into a project which has been going for months is not an easy thing, especially if it's given to you in a broken state. What is easy is to glance at your first error, despair, read Lambda's instructions that &quot;you don't actually have to complete anything this month&quot; (paraphrased), and lie down with a lousy headache. But that's just no fun."/>
+
+    <meta property="og:title" content="Family Promise - Overhauling a Data Science API" />
+    <meta property="og:image" content="/img/backgrounds/ithought.jpg" />
+    <meta property="og:type" content="website" />
+
+	<meta name="twitter:creator" content="@bensomer_ville" />
+	<meta name="twitter:description" content="Jumping into a project which has been going for months is not an easy thing, especially if it's given to you in a broken state. What is easy is to glance at your first error, despair, read Lambda's instructions that &quot;you don't actually have to complete anything this month&quot; (paraphrased), and lie down with a lousy headache. But that's just no fun." />
+	<meta name="twitter:image" content="https://bensomerville.com/img/backgrounds/ithought.jpg" />
+
+    <meta charset="utf-8" http-equiv='Content-Type'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <link rel='shortcut icon' type='image/png' href='/img/icons/eastcoast.jpg' />
+    <link rel='stylesheet' type='text/css' href='/css/main.min.css' />
+</head>
+
+<div id="content" class="center">
+	<a class="header internal" href="/">BEN SOMERVILLE</a>
+	
+	<div class="blog">
+        <h1 id='title'>Family Promise - Overhauling a Data Science API</h1>
+
+        <p id='cred'>Ben Somerville - <span style='color:grey'>Mar 4, 2021</span></p>
+        <a class='blogsoc' href='https://www.linkedin.com/in/ben-somerville/' target='_blank'>
+            <img style='height: 24px' src='/img/icons/linkedin.png' alt='Ben Somerville LinkedIn'></a>
+        <a class='blogsoc' href='https://github.com/bsmrvl' target='_blank'>
+            <img style='height: 24px' src='/img/icons/github.png' alt='Ben Somerville GitHub'></a>
+
+        <div id='mainbody'>
+            <p>Jumping into a project which has been going for months is not an easy thing, especially if it's given to you in a broken state. What <i>is</i> easy is to glance at your first error, despair, read Lambda's instructions that "you don't actually have to complete anything this month" (paraphrased), and lie down with a lousy headache. But that's just no fun.</p>
+            <p>Landing excitedly in my first week of Labs, I immediately realized that the Data Science side of things was indeed broken. Those who came before us were said to have deployed an API with a working predictive model. But the API only returned Internal Server Errors, and the high-scoring model turned out to have major data-leakage issues. Those on the Web side hardly knew what a Data Scientist was, let alone why a DS API was necessary to the app. I didn't feel particularly valued, but instead of cowering in the shadows reserved for me, I stood up and made myself valuable. Let's walk through a few of the hurdles overcome.</p>
+            <br><hr noshade color='#eeeeee'><br>
+            <h2>Taking the Baton</h2>
+            <p>The immediate issue was that the API had no working endpoints. It wasn't clear whether this was due to a small bug or a host of issues. It may have been worthwhile to pinpoint the problems and resolve them one by one, except for the greater problem: data-leakage. The predictive model, which was the only complicated part of the API, was faulty. This cemented my teammates' and my opinion that the API should be totally rebuilt.</p>
+            <p>But before getting into the API design, let's look at this concept of "data-leakage". For this project, our task as Data Scientists was to analyze guests staying at the <a href='https://www.familypromiseofspokane.org'>Family Promise</a> homeless shelter, and then predict their exit destination (permanent housing, temporary housing, emergency, etc.).</p>
+            <p>Now, Family Promise, true to the name, mostly housed <i>families</i>, and families just about always exit <i>together</i>. This is crucial!</p>
+            <p>In predictive modeling one must split their training data into a <b>training</b> set and a <b>validation</b> set. The validation set is hidden while the model is being trained, and then tried out afterwards to see how the model will perform on data it has never seen. The most common way of choosing these sets is a random split: simply shuffle up the data and put 80% in the training set and 20% in the validation set. Do you see the issue?</p>
+            <p>When the designers of the old model used a random training-validation split, <i>they separated family members</i> between the sets. Almost every guest in the validation set had one or more family members in the training set! The model, which was predicting exit destination with a 75% accuracy (not a bad score), was simply basing its predictions on where it already <i>knew</i> a family member had exited from the training data.</p>
+            <p>Well, you ask, why not remove any "family ID" sort of data so the model doesn't know who's in which family? Aha, but machine learning algorithms are more clever than that. The model continued to group families together by finding features which acted as proxies to a family ID. For example, the guest's length of stay at the shelter, in days, is a variable with a lot of variance between guests, <i>unless they're in the same family</i>, in which case it will be identical. The model realized this and continued to make predictions by finding guests in the training set who had that same, highly specific stay length.</p>
+            <p>To make sure it's clear why this is a huge problem, imagine you're a supervisor at the shelter, looking over a newly enrolled guest. Your model essentially makes its prediction by guessing which <i>training set</i> family, from <i>historical</i> data, this <i>new guest</i> belongs to, and assigning the same exit destination. What?!</p>
+            <p>Just to really nail it home&mdash;guess what happens when we do things properly, not separating families in the training-validation split? The model's accuracy drops by about 30%...</p>
+            <br><hr noshade color='#eeeeee'><br>
+            <h2>Building Something Better</h2>
+            <p>It's a matter of hastiness, and I don't blame the past Labs teams for being hasty and building a faulty model; for that's what Lambda encouraged: to build <i>features</i>. Lambda failed to emphasize the importance of cautious foundations and forward-thinking. Rather, they promoted patchwork and a "just follow the Trello board" mindset. That's fine. You do you, Lambda.</p>
+            <p>Meanwhile I rebuilt the API from the ground up, a clean and stable foundation. It's far from complete, and the model can only claim 45% accuracy. But hey, better than a false claim. I focused on creating something which others could build upon, documenting every function and pursuing optimization until the very last day. I wrote up a recommended workflow in the README for those who will improve model performance in the future. I did everything I could to help the project maintain shape, and keep it from disintegrating back into sprawling, half-finished <i>features</i>.</p>
+            <br><hr noshade color='#eeeeee'><br>
+            <p>There were a few technical challenges due to unfamiliarity. First, it was recommended we use FastAPI as our backend framework, as opposed to Flask which we had some experience with. I initially dreaded this, and had to spend a whole day just reading through the FastAPI docs and then listening to tutorials while driving to help a friend move a couch (gotta do what you can). Fortunately those docs are brilliant, and I now find myself loving many things about FastAPI more than Flask. Learning a new framework also forced me to deepen my understanding of SQLAlchemy and its uses beyond the most basic flask-sqlalchemy cases.</p>
+            <p>AWS was another tool I was entirely unfamiliar with, and again fully dreaded getting into. It wasn't quite as much a pleasure to spend a day and a half beating my head as to why my Elastic Beanstalk health kept going "SEVERE", only to find it was because my saved model was in the wrong folder. But there's always a bright side, and that agonizing process motivated me to get WSL2 and Docker set up on my local machine, tools I know will be invaluable in future projects.</p>
+            <br><hr noshade color='#eeeeee'><br>
+            <p>The part which gave me least technical issues, rather comprising pure and fun problem-solving, was the creation of the visualization endpoints. Since you've made it so far down this column of text, why not reward yourself with an interactive plot.</p>
+            <br>
+            <div id='movingavg'></div>
+            <br>
+            <p>This is actually pulled directly from the deployed API (how long before someone messes with it?). It's a 90-day moving average breakdown of the five exit destinations, and is one of several visualizations which will go in the Executive Director dashboard of the final web application (built by the Web team). It gives the Director a sense of whether or not things are moving in the right direction&mdash;Permanent exits being ideal, Unknown being the worst case.</p>
+            <br><hr noshade color='#eeeeee'><br>
+            <h2>Forward Thoughts</h2>
+            <p>I've only begun to discuss the processes I've completed or started throughout this month of Labs. Among the unmentioned are:</p>
+            <ul>
+                <li>An ongoing discussing with the Web team about the structure of what will become the official database, something which must evolve in order to handle new functionality.</li>
+                <li>Automatic data migration scripts, to quickly move tabular historical data into a development database, and eventually (with tweaks) the official database.</li>
+                <li>Object-oriented visualization functions, to allow easy implementation of color/layout changes.</li>
+            </ul>
+            <p>Again, my focus the whole time has been to create something for the future, something which can be built upon. I'm not interested in flashy features unless they fit into the whole like a puzzle piece. Unified code makes reliable applications, and that's what I sought to write.</p>
+            <p>I truly hope my efforts are helpful in this continuing effort to build a better guest management system for <a href='https://www.familypromiseofspokane.org'>Family Promise</a>. I'd be honored if anyone from the coming Labs cohorts reached out to have me walk them through my code. Always happy to help.</p>
+            <br><hr noshade color='#eeeeee'><br>
+            <p>See code <a href='https://github.com/Lambda-School-Labs/family-promise-spokane-ds-a'>here</a></p>
+
+        </div>
+    </div>
+</div>
+
+<div id="canvas">
+	<div id="background"></div>
+</div>
+
+<script>
+    onPageLoad(
+        "Family Promise",
+        {path:'/img/backgrounds/ithought.jpg', att:'fixed'}
+    );
+
+    function plot(r) {
+        r = JSON.parse(r);
+        Plotly.newPlot('movingavg', r, {});
+    }
+
+    function loadScript(url, cb) {
+        let script = document.createElement('script');
+        script.addEventListener('load', cb);
+        script.src = url;
+        document.head.appendChild(script);
+    }
+
+    loadScript(
+        "https://cdn.plot.ly/plotly-latest.min.js",
+        () => loadScript(
+            "https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js",
+            request(
+                'https://famprom.bensomerville.com/moving-avg-DEST/90-60',
+                'GET', null, plot
+            )
+        )
+    );
+</script>

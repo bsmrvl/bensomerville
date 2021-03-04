@@ -1,3 +1,7 @@
+b {
+    font-weight: bold;
+}
+
 .incode {
     font-family: 'Courier New', Courier, monospace;
     background-color: rgba(.7,.7,.7,.1);
@@ -566,7 +570,7 @@ video {
     margin: auto;
     border-radius: 1px;
     font-family:Cambria, Georgia, Times, 'Times New Roman', serif;
-    font-size: 18px;
+    font-size: 17.5px;
     text-align: left;
 }
 .plot {
