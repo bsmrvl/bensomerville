@@ -1,5 +1,3 @@
-Addhandler cgi-script .py .pl .cgi
-
 RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} !-f
