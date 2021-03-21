@@ -46,13 +46,13 @@ theImage.addEventListener('load', readyHandler);
 
 // PLAYLISTS
 
-const euw = ["cyclopath", "srj", "topsong", "thatsano", "sirdoubts", "changesomeone", "fatedelay", "twoeyes", "postal", "wheelless", "anystar", "regrouping", "gb", "barcode", "hireamaid", "stairs", "sandbridge", "patricians", "contraspective", "pretensent", "whatexcuse", "fortuneteller", "backbend", "becky", "sandbridge2", "earsunderwater"];
-const euwCondensed = ["gb", "thatsano", "anystar", "postal", "stairs", "fortuneteller", "topsong", "whatexcuse", "fatedelay", "becky"];
-const eastcoast = ["eastcoast"];
-const entanglement = ["tension", "diminishing", "stage", "pullmeapart", "rest", "mrforeigner","imaginarypain", "togive", "ithought", "father"];
-const greenstone = ["manna", "counterprofeit", "taxi", "concavescent", "tripwired", "endothermic"];
-const stainless = ["cactusjuice", "frozenfloor", "trypnosis", "rhythmic"];
-const quarry = ["toil", "tripwired2", "sorentino"];
+var euw = ["cyclopath", "srj", "topsong", "thatsano", "sirdoubts", "changesomeone", "fatedelay", "twoeyes", "postal", "wheelless", "anystar", "regrouping", "gb", "barcode", "hireamaid", "stairs", "sandbridge", "patricians", "contraspective", "pretensent", "whatexcuse", "fortuneteller", "backbend", "becky", "sandbridge2", "earsunderwater"];
+var euwCondensed = ["gb", "thatsano", "anystar", "postal", "stairs", "fortuneteller", "topsong", "whatexcuse", "fatedelay", "becky"];
+var eastcoast = ["eastcoast"];
+var entanglement = ["tension", "diminishing", "stage", "pullmeapart", "rest", "mrforeigner","imaginarypain", "togive", "ithought", "father"];
+var greenstone = ["manna", "counterprofeit", "taxi", "concavescent", "tripwired", "endothermic"];
+var stainless = ["cactusjuice", "frozenfloor", "trypnosis", "rhythmic"];
+var quarry = ["toil", "tripwired2", "sorentino"];
 
 // NAV SHUFFLE OPTIONS
 
