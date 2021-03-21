@@ -3,6 +3,7 @@
 /** Echos html contents of requested page from p/ directory.
 */
 
+
 if(!$_POST['page']) die("0");
 
 $page = $_POST['page'];

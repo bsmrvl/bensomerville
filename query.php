@@ -3,6 +3,7 @@
 /** Connects to MySQL database, selects data from given query string, and echos as JSON.
 */
 
+
 $conn = new mysqli(
     "127.0.0.1",
     getenv('MYSQL_USER'),
