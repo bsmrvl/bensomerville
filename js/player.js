@@ -1,25 +1,11 @@
+/** Audio player classes and functions.
+*/
+
+
 var playlist;
 var playhead = 0;
 var up = 0;
 var scrubbing = false;
-
-var seekbar = document.getElementById('seekbar');
-var tracktime = document.getElementById('tracktime');
-var aLoading = document.getElementById('aLoading');
-var pCover = document.getElementById('pCover');
-var pName = document.getElementById('pName');
-var pAlbum = document.getElementById('pAlbum');
-var tracklength = document.getElementById('tracklength');
-var pSpot = document.getElementById('pSpot');
-var pYou = document.getElementById('pYou');
-var pSC = document.getElementById('pSC');
-var playb = document.getElementById('playb');
-var pauseb = document.getElementById('pauseb');
-var scrub = document.getElementById('scrub');
-var scrubvis = document.getElementById('scrubvis');
-var sharesong = document.getElementById('sharesong');
-
-document.getElementById('stickyB').style.visibility = 'visible';
 
 class Slot {
     constructor(row) {
@@ -32,15 +18,17 @@ class Slot {
     init(id) {
         this.tid = id;
 
-        var abRef = this.abort.bind(this); this.ref.ab = abRef;
-        var liRef = this.lineUp.bind(this); this.ref.li = liRef;
+        var abRef = this.abort.bind(this); 
+        this.ref.ab = abRef;
+        var liRef = this.lineUp.bind(this); 
+        this.ref.li = liRef;
         document.addEventListener('newimage', abRef, {once:true});
 
         if(fullReady){
             liRef();
         } else {
             document.addEventListener('readyforaudio', liRef, {once:true});
-            this.state = 0; console.log(this.row + ': state 0');
+            this.state = 0; 
         }
     }
     lineUp() {
@@ -50,30 +38,28 @@ class Slot {
             loRef();
         } else {
             Q[+!this.row].a.addEventListener('myplaythrough', loRef, {once:true});
-            this.state = 1; console.log(this.row + ': state 1');
+            this.state = 1; 
         }
     }
     startLoad() {
         var finRef = this.loadFin.bind(this); this.ref.fin = finRef;
 
-        let tdat = tracks.find(t => t.songid === this.tid);
+        let tdat = tracks[this.tid];
 
-        this.a.setAttribute('src', '/'+tdat.filePath); console.log(this.row, this.a);
+        this.a.setAttribute('src', '/'+tdat.filePath); 
         this.a.load();
         this.a.addEventListener('myplaythrough', finRef, {once:true});
         this.row==up && showLoading(true);
-        this.state = 2; console.log(this.row + ': state 2');
+        this.state = 2; 
     }
     loadFin() {
         var abRef = this.ref.ab;
         document.removeEventListener('newimage', abRef);
 
         this.row==up && showLoading(false);
-        this.state = 3; console.log(this.row + ': state 3');
+        this.state = 3; 
     }
     abort(e, reInit=true) {
-        console.log(this.row + ': aborting');
-
         var liRef = this.ref.li;
         document.removeEventListener('readyforaudio', liRef);
         var loRef = this.ref.lo;
@@ -89,18 +75,13 @@ class Slot {
     }
 }
 
-var Q = [new Slot(0), new Slot(1)]
-
-var myplaythrough = new CustomEvent('myplaythrough');
-function PTtakeover(e) {
+function dispatchCustom(e) {
     e.currentTarget.dispatchEvent(myplaythrough);
 }
-Q[0].a.addEventListener('canplaythrough', PTtakeover)
-Q[1].a.addEventListener('canplaythrough', PTtakeover)
 
 function alreadyIn(id){
-    for(let i=0; i<Q.length; i++){
-        if(id === Q[i].tid) return i;
+    for(const q of Q){
+        if(id === q.tid) return i;
     }
     return -1;
 }
@@ -120,7 +101,7 @@ function playNew(specific, now){
             up = 0;
         }
         Q[up].state < 3 && Q[up].abort(null, false);
-        Q[up].init(id), console.log(id);
+        Q[up].init(id);
     }
     if(alreadyIn(idNext) < 0){
         Q[+!up].state < 3 && Q[+!up].abort(null, false);
@@ -189,7 +170,7 @@ function pauser() {
 
 
 function showTrack(tid) {
-    var tdat = tracks.find(t => t.songid === tid);
+    var tdat = tracks[tid];
     pCover.setAttribute("src", '/' + tdat.coverPath);
     pCover.parentNode.setAttribute('href','/p/album/'+tdat.albumid);
     pName.innerHTML = tdat.songname, pName.setAttribute('href','/p/song-/'+tdat.songid);
@@ -261,11 +242,11 @@ function minSec(seconds) {
     return min + ":" + sec;
 }
 
-function fillTrackRow(i, row, tData) {
+function fillTrackRow(row, tData) {
     row.setAttribute('name', tData.songid),
     row.setAttribute('class', 'player');
 
-    var tNum = document.createElement('td'); tNum.innerHTML = i + 1;
+    var tNum = document.createElement('td'); tNum.innerHTML = tData.albumpos;
     var tName = document.createElement('td'); tName.innerHTML = tData.songname;
     var tTime = document.createElement('td'); tTime.innerHTML = tData.runtime;
     var tPage = document.createElement('td'); 
@@ -275,7 +256,7 @@ function fillTrackRow(i, row, tData) {
     row.appendChild(tTime),
     row.appendChild(tPage);
 
-    if ("n" === tData.instrumental) {
+    if (!tData.instrumental) {
         var pLink = document.createElement('a'); pLink.innerHTML = "Lyrics";
         pLink.setAttribute('class', 'internal'), 
         pLink.setAttribute('href', "/p/song-/" + tData.songid), 
@@ -285,14 +266,13 @@ function fillTrackRow(i, row, tData) {
 
 function trackList(list) {
     var tracklist = document.getElementsByClassName('tracklist')[0];
-    for (let i=0; i<list.length; i++) {
-        var tdat = tracks.find(t => t.songid === list[i]);
+    for (const tid of list) {
+        var tdat = tracks[tid];
         var row = document.createElement('tr');
-        tracklist.appendChild(row), fillTrackRow(i, row, tdat)
+        tracklist.appendChild(row), fillTrackRow(row, tdat)
     }
-    var pLinks = document.querySelectorAll('tr a');
-    for(let i=0; i<pLinks.length; i++) {
-        pLinks[i].addEventListener('click', e => e.stopPropagation());
+    for(const pLink of document.querySelectorAll('tr a')) {
+        pLink.addEventListener('click', e => e.stopPropagation());
     }
 }
 
@@ -319,9 +299,8 @@ function newShuffle(now=false) {
 //     playNew('', true);
 // }
 
-var copied = document.getElementById('copied');
 function share() {
-    var album = tracks.find(t => t.songid === playlist[playhead]).albumid;
+    var album = tracks[playlist[playhead]].albumid;
     var link = document.createElement('input'); document.getElementById('footer').appendChild(link);
     link.value = 'https://bensomerville.com/p/album/'+album+'#'+playlist[playhead];
     link.select();
@@ -342,16 +321,3 @@ function playOrPause(sw) {
         ? (playb.style.display = 'none', pauseb.style.display = 'inline')
         : (pauseb.style.display = 'none', playb.style.display = 'inline');
 }
-
-for(let i=0; i<Q.length; i++) {
-    Q[i].a.addEventListener("play", () => playOrPause(true)); 
-    Q[i].a.addEventListener("pause", () => playOrPause(false)); 
-    Q[i].a.addEventListener("ended", e => next(e, true));
-}
-document.getElementById('prev').addEventListener('click', prev);
-document.getElementById('next').addEventListener('click', next);
-document.getElementById('playpause').addEventListener('click', playtoggle);
-
-scrub.addEventListener('pointerdown', scrubber);
-sharesong.addEventListener('click', share);
-setInterval(seekUpdate, 200);
