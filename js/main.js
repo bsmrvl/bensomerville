@@ -68,7 +68,7 @@ function mLink(url) {
     if (songI > -1) {
         song = url.substring(songI + 1, url.length);
         var tdat;
-        if(tdat = tracks.find(t => t.songid === song)){
+        if(tdat = tracks[song]){
             playlist = window[tdat.albumid].concat();
             playhead = playlist.indexOf(song);
             playNew();
