@@ -137,10 +137,7 @@ window.addEventListener('popstate', function() {
 // GET TRACK LIBRARY AND LOAD FIRST SONG
 
 getJSON('/js/tracks.json', r => {
-    tracks = r;
-    playlist = entanglement;
-    playhead = 0;
-    playNew();
+
 
     if (sessionStorage.getItem('firstpage') === null) {
         refresh('home');
@@ -148,5 +145,10 @@ getJSON('/js/tracks.json', r => {
         refresh(mLink(sessionStorage.getItem('firstpage')));
         sessionStorage.removeItem('firstpage')
     }
+
+    tracks = r;
+    playlist = entanglement;
+    playhead = 0;
+    playNew();
     
 });
