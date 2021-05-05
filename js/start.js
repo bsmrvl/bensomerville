@@ -131,12 +131,6 @@ window.addEventListener('popstate', function() {
 
 // LOAD FIRST PAGE (either home or set by 'straight.js')
 
-if (sessionStorage.getItem('firstpage') === null) {
-    refresh('home');
-} else {
-    refresh(mLink(sessionStorage.getItem('firstpage')));
-    sessionStorage.removeItem('firstpage')
-}
 
 
 
@@ -147,4 +141,12 @@ getJSON('/js/tracks.json', r => {
     playlist = entanglement;
     playhead = 0;
     playNew();
+
+    if (sessionStorage.getItem('firstpage') === null) {
+        refresh('home');
+    } else {
+        refresh(mLink(sessionStorage.getItem('firstpage')));
+        sessionStorage.removeItem('firstpage')
+    }
+    
 });
