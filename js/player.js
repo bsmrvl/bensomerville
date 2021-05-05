@@ -80,8 +80,8 @@ function dispatchCustom(e) {
 }
 
 function alreadyIn(id){
-    for(const q of Q){
-        if(id === q.tid) return i;
+    for(var i=0; i<Q.length; i++){
+        if(id === Q[i].tid) return i;
     }
     return -1;
 }
