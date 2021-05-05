@@ -235,6 +235,9 @@ function loadPosts(blog, starting, callback){
         ? qry = `SELECT * FROM posts WHERE bid="${blog}" AND bpos<${starting} ORDER BY bpos DESC LIMIT 3`
         : qry = `SELECT * FROM posts WHERE bid="${blog}" ORDER BY bpos DESC LIMIT 3`;
     query(qry, posts => {
+        if(!posts.length) {
+            posts = [posts]
+        }
         for(const post of posts){
             addPost(post, postBlock);
         }
